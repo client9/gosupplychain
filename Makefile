@@ -7,13 +7,13 @@ build:
 	find . -name '*.go' | xargs gofmt -w -s
 	find . -name '*.go' | xargs goimports -w
 
-golang-corporate-oss.md: Makefile
+reports/github-corporate.md: Makefile
 	go run ./github-search/main.go att airbnb aws bitly cloudflare coreos datadog docker ebay elastic etsy facebookgo fastly gilt \
-		github golang google hashicorp heroku influxdb microsoft netflix pivotal-golang samsung sendgrid sony soundcloud spotify \
-		square stripe uber vimeo yahoo yelp > golang-corporate-oss.md
-corp: golang-corporate-oss.md
+		github golang hashicorp heroku influxdb microsoft netflix pivotal-golang samsung sendgrid sony soundcloud spotify \
+		square stripe uber vimeo yahoo yelp > reports/github-corporate.md
+corp: reports/github-corporate.md
 
-golang-people-oss.md: Makefile
+reports/github-users.md: Makefile
 	go run ./github-search/main.go \
 		alecthomas \
 		araddon	\
@@ -29,19 +29,16 @@ golang-people-oss.md: Makefile
 		robertkrimen \
 		robpike \
 		ryanuber \
-	> golang-people-oss.md
+	> reports/github-users.md
 
-golang-contributors.md: Makefile
+reports/golang-contributors.md: Makefile
 	go run ./github-search/main.go \
+	  	golang \
 		0intro 4ad aclements alexcesaro ality atom-symbol bradfitz c4milo campoy crawshaw \
 		dsymonds dvyukov jpoirier marete minux mpvl nicolasgarnier rakyll rui314 wathiede \
-	> golang-contributors.md
+	> reports/golang-contributors.md
 
-people: golang-people-oss.md
 
 clean:
 	rm -f *~
 	rm -f people.md corp.md
-
-
-
