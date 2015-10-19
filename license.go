@@ -11,6 +11,7 @@ var LicenseFilePrefix = []string{
 	"copying",
 	"unlicense",
 	"copyright",
+	"copyleft"
 }
 
 // IsPossibleLicenseFile returns true if the filename might be contain a software license
