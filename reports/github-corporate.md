@@ -59,8 +59,8 @@
 
 | Package | Description | License | Updated |
 |---------|-------------|---------|---------|
-| [coreos/rkt](https://github.com/coreos/rkt) | rkt is an App Container runtime for Linux | Apache-2.0 | 2015-10-19 |
 | [coreos/etcd](https://github.com/coreos/etcd) | A distributed consistent key-value store for shared configuration and service discovery | Apache-2.0 | 2015-10-19 |
+| [coreos/rkt](https://github.com/coreos/rkt) | rkt is an App Container runtime for Linux | Apache-2.0 | 2015-10-19 |
 | [coreos/dex](https://github.com/coreos/dex) | dex is an OpenID Connect Identity Provider...and more! | Apache-2.0 | 2015-10-19 |
 | [coreos/coreos-cloudinit](https://github.com/coreos/coreos-cloudinit) | an implementation of cloud-config written in Go | Apache-2.0 | 2015-10-19 |
 | [coreos/flannel](https://github.com/coreos/flannel) | flannel is an etcd backed network fabric for containers | Apache-2.0 | 2015-10-19 |
@@ -122,10 +122,10 @@
 
 | Package | Description | License | Updated |
 |---------|-------------|---------|---------|
-| [docker/docker](https://github.com/docker/docker) | Docker - the open-source application container engine | Apache-2.0 | 2015-10-19 |
-| [docker/machine](https://github.com/docker/machine) | Machine management for a container-centric world | Apache-2.0 | 2015-10-19 |
 | [docker/swarm](https://github.com/docker/swarm) | Swarm: a Docker-native clustering system | Apache-2.0 | 2015-10-19 |
+| [docker/machine](https://github.com/docker/machine) | Machine management for a container-centric world | Apache-2.0 | 2015-10-19 |
 | [docker/libnetwork](https://github.com/docker/libnetwork) | networking for containers | Apache-2.0 | 2015-10-19 |
+| [docker/docker](https://github.com/docker/docker) | Docker - the open-source application container engine | Apache-2.0 | 2015-10-19 |
 | [docker/notary](https://github.com/docker/notary) |  | Apache-2.0 | 2015-10-19 |
 | [docker/libcompose](https://github.com/docker/libcompose) |  | Apache-2.0 | 2015-10-17 |
 | [docker/distribution](https://github.com/docker/distribution) | The Docker toolset to pack, ship, store, and deliver content | Apache-2.0 | 2015-10-19 |
@@ -148,7 +148,7 @@
 
 | Package | Description | License | Updated |
 |---------|-------------|---------|---------|
-| [eBay/Fabio](https://github.com/eBay/Fabio) |  | MIT | 2015-10-19 |
+| [eBay/fabio](https://github.com/eBay/fabio) |  | MIT | 2015-10-19 |
 
 
 ### elastic
@@ -247,10 +247,10 @@
 
 | Package | Description | License | Updated |
 |---------|-------------|---------|---------|
-| [google/skia-buildbot](https://github.com/google/skia-buildbot) | paper-material | NewBSD | 2015-09-17 |
-| [google/shipshape](https://github.com/google/shipshape) | Program analysis platform | Apache-2.0 | 2015-10-19 |
-| [google/goterm](https://github.com/google/goterm) |  | NewBSD | 2015-10-19 |
 | [google/cadvisor](https://github.com/google/cadvisor) | Analyzes resource usage and performance characteristics of running containers. | Apache-2.0 | 2015-10-19 |
+| [google/shipshape](https://github.com/google/shipshape) | Program analysis platform | Apache-2.0 | 2015-10-19 |
+| [google/skia-buildbot](https://github.com/google/skia-buildbot) | paper-material | NewBSD | 2015-09-17 |
+| [google/goterm](https://github.com/google/goterm) |  | NewBSD | 2015-10-19 |
 | [google/syzkaller](https://github.com/google/syzkaller) | syzkaller is a distributed, unsupervised, coverage-guided Linux syscall fuzzer | Apache-2.0 | 2015-10-19 |
 | [google/cayley](https://github.com/google/cayley) | An open-source graph database | Apache-2.0 | 2015-10-19 |
 | [google/docopt-scripts](https://github.com/google/docopt-scripts) |  | Apache-2.0 | 2015-10-18 |
@@ -298,8 +298,8 @@
 
 | Package | Description | License | Updated |
 |---------|-------------|---------|---------|
-| [hashicorp/terraform](https://github.com/hashicorp/terraform) | Terraform is a tool for building, changing, and combining infrastructure safely and efficiently. | MPL-2.0 | 2015-10-19 |
 | [hashicorp/nomad](https://github.com/hashicorp/nomad) | A Distributed, Highly Available, Datacenter-Aware Scheduler | MPL-2.0 | 2015-10-19 |
+| [hashicorp/terraform](https://github.com/hashicorp/terraform) | Terraform is a tool for building, changing, and combining infrastructure safely and efficiently. | MPL-2.0 | 2015-10-19 |
 | [hashicorp/consul](https://github.com/hashicorp/consul) | Consul is a tool for service discovery, monitoring and configuration. | MPL-2.0 | 2015-10-19 |
 | [hashicorp/envconsul](https://github.com/hashicorp/envconsul) | Read and set environmental variables for processes from Consul. | MPL-2.0 | 2015-10-19 |
 | [hashicorp/otto](https://github.com/hashicorp/otto) | Development and deployment made easy. | MPL-2.0 | 2015-10-19 |
@@ -341,13 +341,13 @@
 
 | Package | Description | License | Updated |
 |---------|-------------|---------|---------|
+| [heroku/force](https://github.com/heroku/force) | A command-line interface to force.com | MIT | 2015-10-13 |
+| [heroku/shaas](https://github.com/heroku/shaas) | Shell as a Service: API to inspect and execute scripts in a server's environment via HTTP and WebSockets | MIT | 2015-10-19 |
 | [heroku/heroku-cli](https://github.com/heroku/heroku-cli) | Heroku Toolbelt v4 | MIT | 2015-10-19 |
 | [heroku/log-shuttle](https://github.com/heroku/log-shuttle) | HTTP log transport. |  | 2015-10-17 |
 | [heroku/docker-registry-client](https://github.com/heroku/docker-registry-client) | A Go API client for the v2 Docker Registry API | NewBSD | 2015-10-09 |
 | [heroku/lumbermill](https://github.com/heroku/lumbermill) | Log Processor | Apache-2.0 | 2015-09-14 |
-| [heroku/force](https://github.com/heroku/force) | A command-line interface to force.com | MIT | 2015-10-13 |
 | [heroku/log-iss](https://github.com/heroku/log-iss) | logplex HTTP input to TCP forwarder | MIT | 2015-10-05 |
-| [heroku/shaas](https://github.com/heroku/shaas) | Shell as a Service: API to inspect and execute scripts in a server's environment via HTTP and WebSockets | MIT | 2015-08-18 |
 | [heroku/urinception](https://github.com/heroku/urinception) | Data URIs over HTTP | MIT | 2014-11-19 |
 | [heroku/hk](https://github.com/heroku/hk) | Fast Heroku command-line interface | MIT | 2015-10-08 |
 | [heroku/rollrus](https://github.com/heroku/rollrus) | Logrus Rollbar Hook | MIT | 2015-09-01 |
@@ -386,11 +386,43 @@
 | [influxdb/influxdb-agent](https://github.com/influxdb/influxdb-agent) | The server agent |  | 2015-06-02 |
 
 
+### koding
+
+| Package | Description | License | Updated |
+|---------|-------------|---------|---------|
+| [koding/terraform](https://github.com/koding/terraform) | A fork of Terraform | MPL-2.0 | 2015-10-16 |
+| [koding/multiconfig](https://github.com/koding/multiconfig) | Load configuration from multiple sources in Go | MIT | 2015-10-15 |
+| [koding/vagrantutil](https://github.com/koding/vagrantutil) | A toolset to manage Vagrant boxes in Go | NewBSD | 2015-10-16 |
+| [koding/kite](https://github.com/koding/kite) | Micro-service framework in Go | MIT | 2015-10-19 |
+| [koding/sshkey](https://github.com/koding/sshkey) | Package sshkey provides public and private key pair for ssh usage. |  | 2015-10-04 |
+| [koding/ec2dynamicdata](https://github.com/koding/ec2dynamicdata) | EC2 dynamic and meta data Go package | MIT | 2015-07-21 |
+| [koding/tunnel](https://github.com/koding/tunnel) | Tunnel proxy package in Go | NewBSD | 2015-10-16 |
+| [koding/websocketproxy](https://github.com/koding/websocketproxy) | WebSocket reverse proxy handler for Go | MIT | 2015-09-18 |
+| [koding/redis](https://github.com/koding/redis) | Wrapper for redis functions |  | 2015-09-21 |
+| [koding/cache](https://github.com/koding/cache) | Caching package for Go |  | 2015-10-17 |
+| [koding/eventexporter](https://github.com/koding/eventexporter) |  | MIT | 2015-05-08 |
+| [koding/logging](https://github.com/koding/logging) | Simple logging package in Go | MIT | 2015-06-23 |
+| [koding/rabbitmq](https://github.com/koding/rabbitmq) | Wrapper for Go's AMQP package |  | 2015-09-18 |
+| [koding/kodingemail](https://github.com/koding/kodingemail) |  |  | 2015-03-21 |
+| [koding/pubnub](https://github.com/koding/pubnub) | PubNub go-client wrapper |  | 2015-01-20 |
+| [koding/file](https://github.com/koding/file) | File related utils for Go | MIT | 2015-02-26 |
+| [koding/rabbitapi](https://github.com/koding/rabbitapi) | Implementation of RabbitMq Management HTTP Api in Go |  | 2015-02-19 |
+
+
 ### microsoft
 
 | Package | Description | License | Updated |
 |---------|-------------|---------|---------|
 | [Microsoft/hcsshim](https://github.com/Microsoft/hcsshim) | Windows - Host Compute Service Shim | MIT | 2015-10-09 |
+
+
+### paperlesspost
+
+| Package | Description | License | Updated |
+|---------|-------------|---------|---------|
+| [paperlesspost/chromefarm](https://github.com/paperlesspost/chromefarm) | A simple wrapper around paperlesspost/cef2go and Chromium Embedded Framework | MIT | 2015-05-21 |
+| [paperlesspost/tcpez](https://github.com/paperlesspost/tcpez) | tcpez is a simple protocol and client server implementation for a request/response TCP Server using Go (#golang). | MIT | 2015-09-23 |
+| [paperlesspost/nachos](https://github.com/paperlesspost/nachos) | A golang wrapper for nagios |  | 2013-08-21 |
 
 
 ### pivotal-golang
@@ -463,7 +495,7 @@
 
 | Package | Description | License | Updated |
 |---------|-------------|---------|---------|
-| [square/p2](https://github.com/square/p2) | Platypus Platform: Tools for Scalable Deployment | Apache-2.0 | 2015-10-09 |
+| [square/p2](https://github.com/square/p2) | Platypus Platform: Tools for Scalable Deployment | Apache-2.0 | 2015-10-19 |
 | [square/go-jose](https://github.com/square/go-jose) | An implementation of JOSE standards in Golang. | Apache-2.0 | 2015-10-18 |
 | [square/ghostunnel](https://github.com/square/ghostunnel) | A simple SSL/TLS proxy with mutual authentication for securing non-TLS services | Apache-2.0 | 2015-10-19 |
 | [square/gssh](https://github.com/square/gssh) | simple command line to utility to run commands on multiple hosts in parallel | Apache-2.0 | 2015-10-13 |
@@ -487,6 +519,20 @@
 | [stripe/siv-go](https://github.com/stripe/siv-go) | A pure Go implementation of the SIV AEAD. | Apache-2.0 | 2015-08-20 |
 | [stripe/unilog](https://github.com/stripe/unilog) | A logger for use with daemontools. | MIT | 2015-09-23 |
 | [stripe/go-einhorn](https://github.com/stripe/go-einhorn) | Talk to einhorn from your Go worker | MIT | 2015-09-04 |
+
+
+### timehop
+
+| Package | Description | License | Updated |
+|---------|-------------|---------|---------|
+| [timehop/jimmy](https://github.com/timehop/jimmy) | Redigo wrapper | MIT | 2015-09-22 |
+| [timehop/apns](https://github.com/timehop/apns) | A Go package to interface with the Apple Push Notification Service | MIT | 2015-10-10 |
+| [timehop/golog](https://github.com/timehop/golog) | Severity-based key/value logging replacement for Go's standard logger. | MIT | 2015-08-07 |
+| [timehop/go-mixpanel](https://github.com/timehop/go-mixpanel) | Golang client for Mixpanel API | MIT | 2015-09-11 |
+| [timehop/batchhat](https://github.com/timehop/batchhat) | StatHat stat batcher | MIT | 2015-07-08 |
+| [timehop/redisent](https://github.com/timehop/redisent) | Request/response framework for Heroku worker procs backed by Redis. |  | 2015-03-30 |
+| [timehop/gos2](https://github.com/timehop/gos2) | S2 geometry library in Go. Fork of https://code.google.com/p/gos2/ | Apache-2.0 | 2015-09-15 |
+| [timehop/go-bitly](https://github.com/timehop/go-bitly) | Bitly client in Go | MIT | 2015-03-12 |
 
 
 ### uber

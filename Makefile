@@ -8,9 +8,14 @@ build:
 	find . -name '*.go' | xargs goimports -w
 
 reports/github-corporate.md: Makefile
-	go run ./github-search/main.go att airbnb aws bitly cloudflare coreos datadog docker ebay elastic etsy facebookgo fastly gilt \
-		github google hashicorp heroku influxdb microsoft netflix pivotal-golang samsung sendgrid sony soundcloud spotify \
-		square stripe uber vimeo yahoo yelp > reports/github-corporate.md
+	go run ./github-search/main.go att airbnb aws bitly cloudflare coreos datadog docker ebay elastic etsy \
+		facebookgo fastly gilt \
+		github google hashicorp heroku influxdb koding \
+		microsoft netflix  paperlesspost pivotal-golang \
+		samsung sendgrid sony soundcloud spotify \
+		square stripe timehop \
+		uber vimeo yahoo yelp > reports/github-corporate.md
+
 corp: reports/github-corporate.md
 
 reports/github-users.md: Makefile
