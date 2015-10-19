@@ -9,7 +9,7 @@ build:
 
 reports/github-corporate.md: Makefile
 	go run ./github-search/main.go att airbnb aws bitly cloudflare coreos datadog docker ebay elastic etsy facebookgo fastly gilt \
-		github golang hashicorp heroku influxdb microsoft netflix pivotal-golang samsung sendgrid sony soundcloud spotify \
+		github google hashicorp heroku influxdb microsoft netflix pivotal-golang samsung sendgrid sony soundcloud spotify \
 		square stripe uber vimeo yahoo yelp > reports/github-corporate.md
 corp: reports/github-corporate.md
 

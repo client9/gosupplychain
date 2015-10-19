@@ -20,7 +20,7 @@
 | [BurntSushi/cif](https://github.com/BurntSushi/cif) | A golang package for reading and writing data in the Crystallographic Information File (CIF) format. It mostly conforms to the CIF 1.1 specification. | Unlicense | 2014-01-18 |
 | [BurntSushi/intern](https://github.com/BurntSushi/intern) | A simple package for interning strings, with a focus on efficiently representing dense pairwise data. |  | 2015-05-02 |
 | [BurntSushi/gribble](https://github.com/BurntSushi/gribble) | A command oriented language whose environment is defined through Go struct types by reflection. |  | 2015-09-15 |
-| [BurntSushi/xdg](https://github.com/BurntSushi/xdg) | A Go package for reading config and data files according to the XDG Base Directory specification. |  | 2015-07-09 |
+| [BurntSushi/xdg](https://github.com/BurntSushi/xdg) | A Go package for reading config and data files according to the XDG Base Directory specification. |  | 2015-10-19 |
 | [BurntSushi/bcbgo](https://github.com/BurntSushi/bcbgo) | Computational biology tools for the BCB group at Tufts University. |  | 2014-06-29 |
 | [BurntSushi/cluster](https://github.com/BurntSushi/cluster) | A simple API for managing a network cluster with smart peer discovery. | Unlicense | 2015-03-16 |
 | [BurntSushi/cmd](https://github.com/BurntSushi/cmd) | A convenience library for executing commands in Go, including executing commands in parallel with a pool. |  | 2015-05-12 |
@@ -87,6 +87,71 @@
 | [araddon/m2go](https://github.com/araddon/m2go) | Mongrel2 Handler for Go |  | 2014-04-06 |
 
 
+### davecheney
+
+| Package | Description | License | Updated |
+|---------|-------------|---------|---------|
+| [davecheney/gcvis](https://github.com/davecheney/gcvis) | Visualise Go program GC trace data in real time | FreeBSD | 2015-10-19 |
+| [davecheney/junkterm](https://github.com/davecheney/junkterm) | junkterm is a quick and dirty serial terminal. |  | 2015-10-13 |
+| [davecheney/xattr](https://github.com/davecheney/xattr) | Simple extended attribute support for Go |  | 2015-10-16 |
+| [davecheney/junk](https://github.com/davecheney/junk) | #golang packages that don't have a home. | FreeBSD | 2015-08-28 |
+| [davecheney/presentations](https://github.com/davecheney/presentations) | Blah, blah, blah. Did I tell you that I think Go is awesome sauce ? |  | 2015-08-22 |
+| [davecheney/godoc2md](https://github.com/davecheney/godoc2md) | Simple translation from godoc to markdown. | NewBSD | 2015-10-19 |
+| [davecheney/mdns](https://github.com/davecheney/mdns) | Multicast DNS library for Go |  | 2015-09-02 |
+| [davecheney/gpio](https://github.com/davecheney/gpio) | GPIO for Go | FreeBSD | 2015-10-12 |
+| [davecheney/gmx](https://github.com/davecheney/gmx) | Go management extensions |  | 2015-10-07 |
+| [davecheney/env](https://github.com/davecheney/env) | Environment variables for GAE |  | 2014-11-28 |
+| [davecheney/trng](https://github.com/davecheney/trng) | Random bits from an Arduino | FreeBSD | 2015-07-15 |
+| [davecheney/profile](https://github.com/davecheney/profile) | A simple profiling support package for Go | FreeBSD | 2015-10-17 |
+| [davecheney/partyline](https://github.com/davecheney/partyline) | Let's party like ethernet in 1999. | FreeBSD | 2015-10-06 |
+| [davecheney/graphpkg](https://github.com/davecheney/graphpkg) | Graph Go package dependencies |  | 2015-08-01 |
+| [davecheney/buspirate](https://github.com/davecheney/buspirate) | Control your Dangerous Prototypes Bus Pirate with Go | FreeBSD | 2014-08-28 |
+| [davecheney/i2c](https://github.com/davecheney/i2c) | I2C package | FreeBSD | 2015-07-27 |
+| [davecheney/canberra-gophers](https://github.com/davecheney/canberra-gophers) | Talks for the Canberra Gophers meetup |  | 2014-08-13 |
+| [davecheney/gosyd](https://github.com/davecheney/gosyd) | Go Sydney Meetup |  | 2014-07-30 |
+| [davecheney/autobench](https://github.com/davecheney/autobench) | Go benchmark harness.  |  | 2015-10-16 |
+| [davecheney/socksie](https://github.com/davecheney/socksie) | SOCKsie is a SOCKS over SSH proxy in Go |  | 2015-08-31 |
+| [davecheney/benandjerry](https://github.com/davecheney/benandjerry) | Ice cream and data races, what could possibly go wrong. |  | 2014-06-28 |
+| [davecheney/pdp11](https://github.com/davecheney/pdp11) | A PDP-11/45 emulator written in Go |  | 2015-05-13 |
+| [davecheney/xml](https://github.com/davecheney/xml) | Experimental XML package for Go | FreeBSD | 2014-04-06 |
+| [davecheney/planetgolang](https://github.com/davecheney/planetgolang) | http://planetgolang.org/ | NewBSD | 2013-12-21 |
+| [davecheney/faux](https://github.com/davecheney/faux) | A clone of the cmd/go tool | NewBSD | 2015-05-03 |
+| [davecheney/manta](https://github.com/davecheney/manta) | Joyent Manta client for Go | FreeBSD | 2015-04-01 |
+| [davecheney/poller](https://github.com/davecheney/poller) | Poll selectable Reader/Writers | FreeBSD | 2014-06-14 |
+| [davecheney/ccode](https://github.com/davecheney/ccode) | Example code for blog post |  | 2015-03-17 |
+| [davecheney/reader](https://github.com/davecheney/reader) | Open anything as an io.Reader | FreeBSD | 2015-08-02 |
+| [davecheney/crawl-e](https://github.com/davecheney/crawl-e) | The worlds worst web crawler |  | 2014-10-23 |
+| [davecheney/rpi](https://github.com/davecheney/rpi) | bcm2835 support package | FreeBSD | 2014-11-13 |
+| [davecheney/bfk](https://github.com/davecheney/bfk) | Brainfuck interpreter benchmark |  | 2014-06-20 |
+| [davecheney/gogo](https://github.com/davecheney/gogo) | GoGo is an alternative build tool for the Go programming language | FreeBSD | 2015-05-13 |
+| [davecheney/fib](https://github.com/davecheney/fib) | Example code for http://dave.cheney.net/2013/06/09/writing-table-driven-tests-in-go |  | 2015-06-18 |
+| [davecheney/loadavg](https://github.com/davecheney/loadavg) | Simple package to gather the loadavg for various platforms |  | 2015-05-11 |
+| [davecheney/gosf](https://github.com/davecheney/gosf) | GoSF Meetup Presentation |  | 2013-10-16 |
+| [davecheney/golang](https://github.com/davecheney/golang) | Fork of http://git.debian.org/?p=pkg-golang/golang.git |  | 2013-09-28 |
+| [davecheney/tzfetch](https://github.com/davecheney/tzfetch) | Streaming download and unpack of a tgz resource |  | 2013-10-06 |
+| [davecheney/a](https://github.com/davecheney/a) | It's a test repo, eh |  | 2014-02-02 |
+| [davecheney/fswatch](https://github.com/davecheney/fswatch) | File change notifications for Go | NewBSD | 2014-07-19 |
+| [davecheney/pcap](https://github.com/davecheney/pcap) | Native Go pcap library |  | 2014-10-20 |
+| [davecheney/august-go-in-action-draw](https://github.com/davecheney/august-go-in-action-draw) |  |  | 2014-06-14 |
+| [davecheney/zuul](https://github.com/davecheney/zuul) |  |  | 2014-06-14 |
+| [davecheney/dbus-old](https://github.com/davecheney/dbus-old) | D-Bus client implementation for Golang |  | 2013-12-07 |
+| [davecheney/http-over-ssh-example](https://github.com/davecheney/http-over-ssh-example) |  |  | 2015-03-04 |
+| [davecheney/nfs](https://github.com/davecheney/nfs) | NFS client implementation for Golang |  | 2015-08-14 |
+| [davecheney/essessaich](https://github.com/davecheney/essessaich) | The worlds most limited SSH Client implemented in Google Go |  | 2013-10-20 |
+| [davecheney/afp](https://github.com/davecheney/afp) | Apple Filing Protocol client for Go |  | 2015-10-17 |
+| [davecheney/ssh](https://github.com/davecheney/ssh) | private development brach of exp/ssh | NewBSD | 2014-02-05 |
+| [davecheney/snmp](https://github.com/davecheney/snmp) | SNMP library for Go |  | 2015-07-02 |
+| [davecheney/mdns-test](https://github.com/davecheney/mdns-test) | mDNS test |  | 2015-09-16 |
+| [davecheney/mtgox](https://github.com/davecheney/mtgox) | Bitcoin exchange rate tool |  | 2014-04-27 |
+| [davecheney/ncsa](https://github.com/davecheney/ncsa) | NCSA Log Reader for Go |  | 2012-12-25 |
+| [davecheney/irc](https://github.com/davecheney/irc) | Go IRC package |  | 2013-09-29 |
+| [davecheney/poxy](https://github.com/davecheney/poxy) | A proxy written in Go |  | 2014-08-29 |
+| [davecheney/httpx](https://github.com/davecheney/httpx) |  |  | 2014-01-31 |
+| [davecheney/goparts](https://github.com/davecheney/goparts) | Go inspired run-parts |  | 2014-05-01 |
+| [davecheney/fork](https://github.com/davecheney/fork) | Simple wrapper around the exec package in go |  | 2014-04-01 |
+| [davecheney/gobot](https://github.com/davecheney/gobot) | IRC Bot in Go |  | 2013-10-04 |
+
+
 ### fatih
 
 | Package | Description | License | Updated |
@@ -103,6 +168,112 @@
 | [fatih/set](https://github.com/fatih/set) | Set data structure for Go | MIT | 2015-10-18 |
 | [fatih/stopwatch](https://github.com/fatih/stopwatch) | Stopwatch functionality for Go | MIT | 2015-09-16 |
 | [fatih/amqp-examples](https://github.com/fatih/amqp-examples) | Examples to show basic amqp commands in different languages |  | 2015-08-01 |
+
+
+### mattn
+
+| Package | Description | License | Updated |
+|---------|-------------|---------|---------|
+| [mattn/go-xmpp](https://github.com/mattn/go-xmpp) | go xmpp library (original was written by russ cox  ) | NewBSD | 2015-10-19 |
+| [mattn/files](https://github.com/mattn/files) | Fast file find |  | 2015-08-24 |
+| [mattn/goveralls](https://github.com/mattn/goveralls) |  |  | 2015-09-28 |
+| [mattn/go-lingr](https://github.com/mattn/go-lingr) |  |  | 2015-06-14 |
+| [mattn/goreman](https://github.com/mattn/goreman) | foreman clone written in go language |  | 2015-10-17 |
+| [mattn/gomirc](https://github.com/mattn/gomirc) |  |  | 2015-07-24 |
+| [mattn/jvgrep](https://github.com/mattn/jvgrep) | grep for japanese vimmer |  | 2015-09-03 |
+| [mattn/go-precure](https://github.com/mattn/go-precure) |  |  | 2015-09-29 |
+| [mattn/go-haiku](https://github.com/mattn/go-haiku) |  |  | 2015-09-29 |
+| [mattn/gom](https://github.com/mattn/gom) | Go Manager - bundle for go |  | 2015-10-18 |
+| [mattn/go-gtk](https://github.com/mattn/go-gtk) | Go binding for GTK |  | 2015-10-15 |
+| [mattn/go-oci8](https://github.com/mattn/go-oci8) | oracle driver for go that using database/sql |  | 2015-09-28 |
+| [mattn/gyagowin](https://github.com/mattn/gyagowin) | gyazowin clone on golang |  | 2015-10-13 |
+| [mattn/webapp-vim](https://github.com/mattn/webapp-vim) |  |  | 2015-10-05 |
+| [mattn/serialcat](https://github.com/mattn/serialcat) | netcat for serial port |  | 2015-10-15 |
+| [mattn/nekokak](https://github.com/mattn/nekokak) |  |  | 2015-09-04 |
+| [mattn/anko](https://github.com/mattn/anko) | Scriptable interpreter written in golang |  | 2015-10-13 |
+| [mattn/check-code-google-com](https://github.com/mattn/check-code-google-com) |  |  | 2015-04-16 |
+| [mattn/go-runewidth](https://github.com/mattn/go-runewidth) |  |  | 2015-10-03 |
+| [mattn/ght](https://github.com/mattn/ght) | GitHub Trend in CLI |  | 2015-09-09 |
+| [mattn/go15internal](https://github.com/mattn/go15internal) |  |  | 2015-08-20 |
+| [mattn/go-isatty](https://github.com/mattn/go-isatty) |  | MIT | 2015-10-17 |
+| [mattn/go-redmine](https://github.com/mattn/go-redmine) |  |  | 2015-08-21 |
+| [mattn/yomikata](https://github.com/mattn/yomikata) |  |  | 2015-08-01 |
+| [mattn/go-docomo](https://github.com/mattn/go-docomo) |  |  | 2015-03-09 |
+| [mattn/shinchoku-doudesuka](https://github.com/mattn/shinchoku-doudesuka) | 進捗どうですか |  | 2015-07-16 |
+| [mattn/ezoe](https://github.com/mattn/ezoe) |  |  | 2015-07-23 |
+| [mattn/go-colorable](https://github.com/mattn/go-colorable) |  |  | 2015-10-10 |
+| [mattn/bkfile](https://github.com/mattn/bkfile) |  |  | 2015-06-24 |
+| [mattn/go-pubsub](https://github.com/mattn/go-pubsub) |  |  | 2015-09-10 |
+| [mattn/http-gonsole](https://github.com/mattn/http-gonsole) | Speak HTTP like a local. (the simple, intuitive HTTP console, golang version) |  | 2015-09-05 |
+| [mattn/go-riot-example](https://github.com/mattn/go-riot-example) |  |  | 2015-06-16 |
+| [mattn/twitter-icon](https://github.com/mattn/twitter-icon) |  |  | 2015-06-14 |
+| [mattn/vim-jp.herokuapp.com](https://github.com/mattn/vim-jp.herokuapp.com) |  |  | 2015-06-13 |
+| [mattn/play-anko.appspot.com](https://github.com/mattn/play-anko.appspot.com) |  |  | 2015-06-01 |
+| [mattn/rebuildfm](https://github.com/mattn/rebuildfm) |  |  | 2015-06-05 |
+| [mattn/twty](https://github.com/mattn/twty) | command-line twitter client written in golang |  | 2015-09-17 |
+| [mattn/go-gimei](https://github.com/mattn/go-gimei) |  |  | 2015-09-29 |
+| [mattn/go-v8](https://github.com/mattn/go-v8) | Go binding for v8 |  | 2015-10-07 |
+| [mattn/todo](https://github.com/mattn/todo) | A simple command-line todo list written in Go. |  | 2015-10-19 |
+| [mattn/natural](https://github.com/mattn/natural) |  |  | 2015-07-03 |
+| [mattn/jedie](https://github.com/mattn/jedie) | Static site generator written in golang |  | 2015-09-30 |
+| [mattn/gof](https://github.com/mattn/gof) |  |  | 2015-10-11 |
+| [mattn/gotr](https://github.com/mattn/gotr) | entr clone in golang |  | 2015-04-20 |
+| [mattn/imgur](https://github.com/mattn/imgur) |  |  | 2015-09-15 |
+| [mattn/go-gntp](https://github.com/mattn/go-gntp) | GNTP for golang. http://www.growlforwindows.com/gfw/help/gntp.aspx |  | 2015-08-11 |
+| [mattn/gospel](https://github.com/mattn/gospel) |  |  | 2015-09-03 |
+| [mattn/goemon](https://github.com/mattn/goemon) | 五右衛門 |  | 2015-10-19 |
+| [mattn/gxuitter](https://github.com/mattn/gxuitter) |  |  | 2015-07-12 |
+| [mattn/etcdenv](https://github.com/mattn/etcdenv) |  | MIT | 2015-09-22 |
+| [mattn/go-shellwords](https://github.com/mattn/go-shellwords) | Parse line as shell words |  | 2015-10-16 |
+| [mattn/go-scan](https://github.com/mattn/go-scan) |  |  | 2015-10-10 |
+| [mattn/go-yql](https://github.com/mattn/go-yql) | YQL database driver for golang. |  | 2015-10-11 |
+| [mattn/go-getopt](https://github.com/mattn/go-getopt) | getopt for golang |  | 2015-03-16 |
+| [mattn/gyago](https://github.com/mattn/gyago) | gyazo application written in go |  | 2015-03-15 |
+| [mattn/go-encoding](https://github.com/mattn/go-encoding) |  |  | 2015-05-30 |
+| [mattn/ujihisa](https://github.com/mattn/ujihisa) | 便利 |  | 2015-03-12 |
+| [mattn/utf8run](https://github.com/mattn/utf8run) |  |  | 2015-03-12 |
+| [mattn/say](https://github.com/mattn/say) |  |  | 2015-03-08 |
+| [mattn/cool-ascii-faces](https://github.com/mattn/cool-ascii-faces) |  |  | 2015-06-03 |
+| [mattn/foobar](https://github.com/mattn/foobar) |  |  | 2015-03-04 |
+| [mattn/go-rl](https://github.com/mattn/go-rl) | Simple readline for multi-platform |  | 2015-06-05 |
+| [mattn/grpc-example](https://github.com/mattn/grpc-example) |  |  | 2015-10-18 |
+| [mattn/colorchan](https://github.com/mattn/colorchan) | コロちゃん |  | 2015-02-25 |
+| [mattn/sc](https://github.com/mattn/sc) | Sub Command |  | 2015-03-21 |
+| [mattn/todoly](https://github.com/mattn/todoly) | cli interface for todo.ly |  | 2015-02-25 |
+| [mattn/platini](https://github.com/mattn/platini) |  |  | 2015-02-04 |
+| [mattn/go-lingrimagebot](https://github.com/mattn/go-lingrimagebot) |  |  | 2015-02-04 |
+| [mattn/go-ole-test](https://github.com/mattn/go-ole-test) |  |  | 2015-01-28 |
+| [mattn/go-adodb](https://github.com/mattn/go-adodb) | Microsoft ActiveX Object DataBase driver for go that using exp/sql |  | 2015-09-15 |
+| [mattn/itunes-search-api](https://github.com/mattn/itunes-search-api) | iTunes Search API for golang |  | 2015-05-30 |
+| [mattn/siritori-bot](https://github.com/mattn/siritori-bot) |  |  | 2015-01-23 |
+| [mattn/pkg-gonfig](https://github.com/mattn/pkg-gonfig) |  |  | 2015-01-14 |
+| [mattn/streeem](https://github.com/mattn/streeem) | ごめんなさいごめんなさい |  | 2015-09-22 |
+| [mattn/lingr-test](https://github.com/mattn/lingr-test) |  |  | 2014-12-12 |
+| [mattn/go-ieproxy](https://github.com/mattn/go-ieproxy) |  |  | 2014-12-23 |
+| [mattn/go-jsonpointer](https://github.com/mattn/go-jsonpointer) |  |  | 2015-05-15 |
+| [mattn/cachey](https://github.com/mattn/cachey) | Expire-able cache |  | 2015-04-20 |
+| [mattn/gotail](https://github.com/mattn/gotail) |  |  | 2015-04-03 |
+| [mattn/lastpass-go](https://github.com/mattn/lastpass-go) |  |  | 2015-05-12 |
+| [mattn/go-lingrbot](https://github.com/mattn/go-lingrbot) |  |  | 2015-07-10 |
+| [mattn/serve](https://github.com/mattn/serve) |  |  | 2014-11-14 |
+| [mattn/docker-cmd](https://github.com/mattn/docker-cmd) |  |  | 2014-10-28 |
+| [mattn/kocho](https://github.com/mattn/kocho) |  |  | 2014-11-15 |
+| [mattn/goji-wiki](https://github.com/mattn/goji-wiki) |  |  | 2015-10-13 |
+| [mattn/go-mjpeg](https://github.com/mattn/go-mjpeg) |  |  | 2015-04-28 |
+| [mattn/go-sixel](https://github.com/mattn/go-sixel) |  |  | 2015-03-08 |
+| [mattn/mvnclasspath](https://github.com/mattn/mvnclasspath) |  |  | 2014-09-04 |
+| [mattn/go-sizedwriter](https://github.com/mattn/go-sizedwriter) |  |  | 2014-08-21 |
+| [mattn/ttyrec4windows](https://github.com/mattn/ttyrec4windows) |  |  | 2015-05-04 |
+| [mattn/peco-cmigemo](https://github.com/mattn/peco-cmigemo) |  |  | 2015-01-16 |
+| [mattn/go-cgi](https://github.com/mattn/go-cgi) |  |  | 2015-06-18 |
+| [mattn/mackerel-agent-win32](https://github.com/mattn/mackerel-agent-win32) | mackerel agent for windows |  | 2014-06-13 |
+| [mattn/go-uv](https://github.com/mattn/go-uv) | Go binding for libuv |  | 2015-09-01 |
+| [mattn/pingpong](https://github.com/mattn/pingpong) |  |  | 2015-07-08 |
+| [mattn/go-plist](https://github.com/mattn/go-plist) |  |  | 2015-04-25 |
+| [mattn/mattn.ng.bluemix.net](https://github.com/mattn/mattn.ng.bluemix.net) |  |  | 2014-03-06 |
+| [mattn/git-pushall](https://github.com/mattn/git-pushall) | git-ﾌﾟｼｬｧｧｧ |  | 2014-03-04 |
+| [mattn/go-to-hell](https://github.com/mattn/go-to-hell) | (╯°□°）╯︵ɓuɐloɓ (x1) |  | 2014-06-27 |
+| [mattn/omega](https://github.com/mattn/omega) |  |  | 2014-02-28 |
 
 
 ### miekg
@@ -180,6 +351,44 @@
 | [philhofer/Superbuff](https://github.com/philhofer/Superbuff) | C Dynamic Buffers for Go - an experiment in CGO |  | 2014-09-23 |
 | [philhofer/tcx](https://github.com/philhofer/tcx) | A Go package for reading and writing Garmin *.tcx files. | MIT | 2014-04-22 |
 | [philhofer/vec](https://github.com/philhofer/vec) | Functional Math and Data Analysis for Go |  | 2015-01-13 |
+
+
+### robertkrimen
+
+| Package | Description | License | Updated |
+|---------|-------------|---------|---------|
+| [robertkrimen/otto](https://github.com/robertkrimen/otto) | A JavaScript interpreter in Go (golang) | MIT | 2015-10-19 |
+| [robertkrimen/gphr](https://github.com/robertkrimen/gphr) | Upload Go programs (binaries) as GitHub Releases |  | 2015-08-31 |
+| [robertkrimen/terst](https://github.com/robertkrimen/terst) | A terse, easy-to-use testing library for Go (golang) | MIT | 2015-04-17 |
+| [robertkrimen/natto](https://github.com/robertkrimen/natto) | natto is an example/offshoot of otto that implements an event loop (supporting setTimeout/setInterval) |  | 2015-09-28 |
+| [robertkrimen/pianobarproxy](https://github.com/robertkrimen/pianobarproxy) | pianobarproxy is a simple SOCKS5 shim for pianobar |  | 2014-12-23 |
+| [robertkrimen/godocdown](https://github.com/robertkrimen/godocdown) | Format package documentation (godoc) as GitHub friendly Markdown |  | 2015-10-18 |
+| [robertkrimen/smuggol](https://github.com/robertkrimen/smuggol) | smuggol is a tool for physically importing Go code from one package to another |  | 2014-07-06 |
+| [robertkrimen/gxc](https://github.com/robertkrimen/gxc) | gxc is a simple cross-compiling frontend for go |  | 2015-10-01 |
+| [robertkrimen/dogbag](https://github.com/robertkrimen/dogbag) | Bundle data with your Go executable (Take your data to Go) |  | 2015-03-08 |
+| [robertkrimen/dbg](https://github.com/robertkrimen/dbg) | Package dbg is a println/printf/log-debugging utility library for Go. |  | 2014-12-02 |
+| [robertkrimen/isatty](https://github.com/robertkrimen/isatty) | Determine if a file descriptor is a terminal in Go |  | 2015-07-23 |
+| [robertkrimen/kilt](https://github.com/robertkrimen/kilt) |  |  | 2014-04-12 |
+
+
+### robpike
+
+| Package | Description | License | Updated |
+|---------|-------------|---------|---------|
+| [robpike/ivy](https://github.com/robpike/ivy) | ivy, an APL-like calculator | FreeBSD | 2015-10-19 |
+| [robpike/unicode](https://github.com/robpike/unicode) | Unicode is a command-line utility for browsing the Unicode database. | FreeBSD | 2015-10-16 |
+| [robpike/scrub](https://github.com/robpike/scrub) |  | FreeBSD | 2015-09-25 |
+| [robpike/nihongo](https://github.com/robpike/nihongo) |  | FreeBSD | 2015-08-20 |
+| [robpike/doc](https://github.com/robpike/doc) | Go document helper | FreeBSD | 2015-09-25 |
+| [robpike/kata](https://github.com/robpike/kata) | Kata is a command to transliterate ASCII to katakana. | FreeBSD | 2015-08-19 |
+| [robpike/hira](https://github.com/robpike/hira) | Hira is a command to transliterate ASCII to Hiragana. | FreeBSD | 2015-08-19 |
+| [robpike/kana](https://github.com/robpike/kana) | Kana is a command to transliterate hiragana and katakana to ASCII. | FreeBSD | 2015-08-19 |
+| [robpike/filter](https://github.com/robpike/filter) | Simple apply/filter/reduce package. | FreeBSD | 2015-09-16 |
+| [robpike/freq](https://github.com/robpike/freq) | Command to show character (Unicode code point) frequency. | FreeBSD | 2015-05-25 |
+| [robpike/strings](https://github.com/robpike/strings) | Strings is a custom, Unicode-competent version of the BSD strings utility. | FreeBSD | 2015-07-23 |
+| [robpike/translate](https://github.com/robpike/translate) | Translate is a command-line interface to the Google translate API. | FreeBSD | 2015-09-26 |
+| [robpike/now](https://github.com/robpike/now) | Convenient global date printer | FreeBSD | 2015-09-23 |
+| [robpike/typo](https://github.com/robpike/typo) | Typo is a Go version of the old Unix typo command. | FreeBSD | 2015-09-23 |
 
 
 ### ryanuber

@@ -12,9 +12,9 @@
 
 | Package | Description | License | Updated |
 |---------|-------------|---------|---------|
+| [aws/amazon-ecs-agent](https://github.com/aws/amazon-ecs-agent) | Amazon EC2 Container Service Agent | MIT | 2015-10-19 |
 | [aws/aws-sdk-go](https://github.com/aws/aws-sdk-go) | AWS SDK for the Go programming language. | Apache-2.0 | 2015-10-19 |
 | [aws/amazon-ecs-cli](https://github.com/aws/amazon-ecs-cli) | A custom Amazon ECS CLI that eases up the cluster setup process, enables users to run their applications locally or on ECS using the same Docker Compose file format and familiar Compose commands.  |  | 2015-10-19 |
-| [aws/amazon-ecs-agent](https://github.com/aws/amazon-ecs-agent) | Amazon EC2 Container Service Agent | MIT | 2015-10-19 |
 | [aws/amazon-ecs-init](https://github.com/aws/amazon-ecs-init) | Amazon EC2 Container Service RPM | Apache-2.0 | 2015-10-16 |
 
 
@@ -23,7 +23,7 @@
 | Package | Description | License | Updated |
 |---------|-------------|---------|---------|
 | [bitly/statsdaemon](https://github.com/bitly/statsdaemon) | an implementation of Etsy's statsd in Go | Unlicense | 2015-10-15 |
-| [bitly/oauth2_proxy](https://github.com/bitly/oauth2_proxy) | A reverse proxy that provides authentication with Google, Github or other provider | MIT | 2015-10-17 |
+| [bitly/oauth2_proxy](https://github.com/bitly/oauth2_proxy) | A reverse proxy that provides authentication with Google, Github or other provider | MIT | 2015-10-19 |
 | [bitly/go-simplejson](https://github.com/bitly/go-simplejson) | a Go package to interact with arbitrary JSON | MIT | 2015-10-19 |
 | [bitly/go-hostpool](https://github.com/bitly/go-hostpool) | Intelligently and flexibly pool among multiple hosts from your Go application | MIT | 2015-10-19 |
 | [bitly/timer_metrics](https://github.com/bitly/timer_metrics) | TimerMetrics captures timings and enables periodic metrics every n events |  | 2015-06-09 |
@@ -40,7 +40,7 @@
 | [cloudflare/cfssl](https://github.com/cloudflare/cfssl) | CFSSL: CloudFlare's PKI toolkit | FreeBSD | 2015-10-19 |
 | [cloudflare/redoctober](https://github.com/cloudflare/redoctober) | Go server for two-man rule style file encryption and decryption. | FreeBSD | 2015-10-17 |
 | [cloudflare/cf-tls](https://github.com/cloudflare/cf-tls) | A duplicate of Go's crypto/tls, with additional helper functions |  | 2015-09-16 |
-| [cloudflare/service](https://github.com/cloudflare/service) |  | FreeBSD | 2015-10-13 |
+| [cloudflare/service](https://github.com/cloudflare/service) |  | FreeBSD | 2015-10-19 |
 | [cloudflare/dns](https://github.com/cloudflare/dns) | Clone of https://github.com/miekg/dns | NewBSD | 2015-10-09 |
 | [cloudflare/go](https://github.com/cloudflare/go) | Stable Go with useful patches from tip | NewBSD | 2015-10-19 |
 | [cloudflare/buffer](https://github.com/cloudflare/buffer) | A file backed circular buffer. Mmap file into memory. Madvise to lower memory footprint. |  | 2015-10-05 |
@@ -59,9 +59,9 @@
 
 | Package | Description | License | Updated |
 |---------|-------------|---------|---------|
+| [coreos/rkt](https://github.com/coreos/rkt) | rkt is an App Container runtime for Linux | Apache-2.0 | 2015-10-19 |
 | [coreos/etcd](https://github.com/coreos/etcd) | A distributed consistent key-value store for shared configuration and service discovery | Apache-2.0 | 2015-10-19 |
 | [coreos/dex](https://github.com/coreos/dex) | dex is an OpenID Connect Identity Provider...and more! | Apache-2.0 | 2015-10-19 |
-| [coreos/rkt](https://github.com/coreos/rkt) | rkt is an App Container runtime for Linux | Apache-2.0 | 2015-10-19 |
 | [coreos/coreos-cloudinit](https://github.com/coreos/coreos-cloudinit) | an implementation of cloud-config written in Go | Apache-2.0 | 2015-10-19 |
 | [coreos/flannel](https://github.com/coreos/flannel) | flannel is an etcd backed network fabric for containers | Apache-2.0 | 2015-10-19 |
 | [coreos/go-systemd](https://github.com/coreos/go-systemd) | Go bindings to systemd socket activation, journal, D-Bus, and unit files | Apache-2.0 | 2015-10-18 |
@@ -180,7 +180,7 @@
 | [facebookgo/atomicfile](https://github.com/facebookgo/atomicfile) | Package atomicfile provides an atomically written/replaced file. | FreeBSD | 2015-09-29 |
 | [facebookgo/stats](https://github.com/facebookgo/stats) | Package stats defines a lightweight interface for collecting statistics. | FreeBSD | 2015-09-29 |
 | [facebookgo/rocks-strata](https://github.com/facebookgo/rocks-strata) |  | FreeBSD | 2015-10-07 |
-| [facebookgo/grace](https://github.com/facebookgo/grace) | Graceful restart for Go servers. | FreeBSD | 2015-10-18 |
+| [facebookgo/grace](https://github.com/facebookgo/grace) | Graceful restart for Go servers. | FreeBSD | 2015-10-19 |
 | [facebookgo/httpdown](https://github.com/facebookgo/httpdown) | Package httpdown provides http.ConnState enabled graceful termination of http.Server. | FreeBSD | 2015-10-14 |
 | [facebookgo/mgotest](https://github.com/facebookgo/mgotest) | Package mgotest provides standalone instances of mongo sutable for use in tests. | FreeBSD | 2015-09-21 |
 | [facebookgo/parseignore](https://github.com/facebookgo/parseignore) |  | FreeBSD | 2015-08-21 |
@@ -247,9 +247,9 @@
 
 | Package | Description | License | Updated |
 |---------|-------------|---------|---------|
+| [google/skia-buildbot](https://github.com/google/skia-buildbot) | paper-material | NewBSD | 2015-09-17 |
 | [google/shipshape](https://github.com/google/shipshape) | Program analysis platform | Apache-2.0 | 2015-10-19 |
 | [google/goterm](https://github.com/google/goterm) |  | NewBSD | 2015-10-19 |
-| [google/skia-buildbot](https://github.com/google/skia-buildbot) | paper-material | NewBSD | 2015-09-17 |
 | [google/cadvisor](https://github.com/google/cadvisor) | Analyzes resource usage and performance characteristics of running containers. | Apache-2.0 | 2015-10-19 |
 | [google/syzkaller](https://github.com/google/syzkaller) | syzkaller is a distributed, unsupervised, coverage-guided Linux syscall fuzzer | Apache-2.0 | 2015-10-19 |
 | [google/cayley](https://github.com/google/cayley) | An open-source graph database | Apache-2.0 | 2015-10-19 |
@@ -272,7 +272,7 @@
 | [google/gxui](https://github.com/google/gxui) | An experimental Go cross platform UI library. | NewBSD | 2015-10-19 |
 | [google/navc](https://github.com/google/navc) | C code indexer using language semantic from clang | Apache-2.0 | 2015-10-17 |
 | [google/stenographer](https://github.com/google/stenographer) | Stenographer is a packet capture solution which aims to quickly spool all packets to disk, then provide simple, fast access to subsets of those packets.  Discussion/announcements at stenographer@googlegroups.com | Apache-2.0 | 2015-10-15 |
-| [google/gofuzz](https://github.com/google/gofuzz) | Fuzz testing for go. | Apache-2.0 | 2015-10-10 |
+| [google/gofuzz](https://github.com/google/gofuzz) | Fuzz testing for go. | Apache-2.0 | 2015-10-19 |
 | [google/todo-tracks](https://github.com/google/todo-tracks) | Web dashboard for tracking the TODOs in a Git repo | Apache-2.0 | 2015-09-11 |
 | [google/identity-toolkit-go-client](https://github.com/google/identity-toolkit-go-client) | Google identity Toolkit client library for Go | Apache-2.0 | 2015-10-06 |
 | [google/go-tpm](https://github.com/google/go-tpm) |  | Apache-2.0 | 2015-10-12 |
@@ -298,13 +298,13 @@
 
 | Package | Description | License | Updated |
 |---------|-------------|---------|---------|
-| [hashicorp/nomad](https://github.com/hashicorp/nomad) | A Distributed, Highly Available, Datacenter-Aware Scheduler | MPL-2.0 | 2015-10-19 |
 | [hashicorp/terraform](https://github.com/hashicorp/terraform) | Terraform is a tool for building, changing, and combining infrastructure safely and efficiently. | MPL-2.0 | 2015-10-19 |
+| [hashicorp/nomad](https://github.com/hashicorp/nomad) | A Distributed, Highly Available, Datacenter-Aware Scheduler | MPL-2.0 | 2015-10-19 |
+| [hashicorp/consul](https://github.com/hashicorp/consul) | Consul is a tool for service discovery, monitoring and configuration. | MPL-2.0 | 2015-10-19 |
 | [hashicorp/envconsul](https://github.com/hashicorp/envconsul) | Read and set environmental variables for processes from Consul. | MPL-2.0 | 2015-10-19 |
 | [hashicorp/otto](https://github.com/hashicorp/otto) | Development and deployment made easy. | MPL-2.0 | 2015-10-19 |
 | [hashicorp/vault](https://github.com/hashicorp/vault) | A tool for managing secrets. | MPL-2.0 | 2015-10-19 |
 | [hashicorp/atlas-go](https://github.com/hashicorp/atlas-go) | The official Go client for HashiCorp's Atlas | MPL-2.0 | 2015-10-16 |
-| [hashicorp/consul](https://github.com/hashicorp/consul) | Consul is a tool for service discovery, monitoring and configuration. | MPL-2.0 | 2015-10-19 |
 | [hashicorp/go-checkpoint](https://github.com/hashicorp/go-checkpoint) |  | MPL-2.0 | 2015-05-10 |
 | [hashicorp/consul-template](https://github.com/hashicorp/consul-template) | Generic template rendering and notifications with Consul | MPL-2.0 | 2015-10-19 |
 | [hashicorp/go-getter](https://github.com/hashicorp/go-getter) | Package for downloading things from a string URL using a variety of protocols. | MPL-2.0 | 2015-10-19 |
@@ -393,6 +393,23 @@
 | [Microsoft/hcsshim](https://github.com/Microsoft/hcsshim) | Windows - Host Compute Service Shim | MIT | 2015-10-09 |
 
 
+### pivotal-golang
+
+| Package | Description | License | Updated |
+|---------|-------------|---------|---------|
+| [pivotal-golang/clock](https://github.com/pivotal-golang/clock) | time provider & rich fake for Go | Apache-2.0 | 2015-05-29 |
+| [pivotal-golang/s3cli](https://github.com/pivotal-golang/s3cli) | Go CLI for S3 | MIT | 2015-08-28 |
+| [pivotal-golang/lager](https://github.com/pivotal-golang/lager) | An opinionated logger for Go. | Apache-2.0 | 2015-10-15 |
+| [pivotal-golang/timer](https://github.com/pivotal-golang/timer) | No clever names for us! | Apache-2.0 | 2015-06-07 |
+| [pivotal-golang/conceal](https://github.com/pivotal-golang/conceal) |  |  | 2015-03-02 |
+| [pivotal-golang/localip](https://github.com/pivotal-golang/localip) |  |  | 2015-04-28 |
+| [pivotal-golang/operationq](https://github.com/pivotal-golang/operationq) | processes multiple queues in parallel | Apache-2.0 | 2015-04-28 |
+| [pivotal-golang/eventhub](https://github.com/pivotal-golang/eventhub) |  |  | 2015-04-28 |
+| [pivotal-golang/archiver](https://github.com/pivotal-golang/archiver) | Utilities for extracting and compressing tgz and zip files. | Apache-2.0 | 2015-07-15 |
+| [pivotal-golang/bytefmt](https://github.com/pivotal-golang/bytefmt) | Human readable byte formatter | Apache-2.0 | 2015-08-13 |
+| [pivotal-golang/semaphore](https://github.com/pivotal-golang/semaphore) |  |  | 2014-10-15 |
+
+
 ### sendgrid
 
 | Package | Description | License | Updated |
@@ -446,9 +463,9 @@
 
 | Package | Description | License | Updated |
 |---------|-------------|---------|---------|
+| [square/p2](https://github.com/square/p2) | Platypus Platform: Tools for Scalable Deployment | Apache-2.0 | 2015-10-09 |
 | [square/go-jose](https://github.com/square/go-jose) | An implementation of JOSE standards in Golang. | Apache-2.0 | 2015-10-18 |
 | [square/ghostunnel](https://github.com/square/ghostunnel) | A simple SSL/TLS proxy with mutual authentication for securing non-TLS services | Apache-2.0 | 2015-10-19 |
-| [square/p2](https://github.com/square/p2) | Platypus Platform: Tools for Scalable Deployment | Apache-2.0 | 2015-10-09 |
 | [square/gssh](https://github.com/square/gssh) | simple command line to utility to run commands on multiple hosts in parallel | Apache-2.0 | 2015-10-13 |
 | [square/certstrap](https://github.com/square/certstrap) | Tools to bootstrap CAs, certificate requests, and signed certificates. | Apache-2.0 | 2015-10-15 |
 | [square/metrics](https://github.com/square/metrics) | Metrics Query Engine | Apache-2.0 | 2015-10-11 |
@@ -476,8 +493,8 @@
 
 | Package | Description | License | Updated |
 |---------|-------------|---------|---------|
-| [uber/ringpop-go](https://github.com/uber/ringpop-go) | Scalable, fault-tolerant application-layer sharding | MIT | 2015-10-19 |
 | [uber/tchannel-go](https://github.com/uber/tchannel-go) |  |  | 2015-10-17 |
+| [uber/ringpop-go](https://github.com/uber/ringpop-go) | Scalable, fault-tolerant application-layer sharding | MIT | 2015-10-19 |
 | [uber/go-torch](https://github.com/uber/go-torch) | Stochastic flame graph profiler for Go programs | MIT | 2015-10-19 |
 | [uber/uberalls](https://github.com/uber/uberalls) | Track code coverage metrics with Jenkins and Phabricator | MIT | 2015-10-13 |
 

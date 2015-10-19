@@ -173,6 +173,45 @@
 | [dvyukov/go-conc](https://github.com/dvyukov/go-conc) | Automatically exported from code.google.com/p/go-conc |  | 2015-07-31 |
 
 
+### golang
+
+| Package | Description | License | Updated |
+|---------|-------------|---------|---------|
+| [golang/net](https://github.com/golang/net) | [mirror] Go supplementary network libraries | NewBSD | 2015-10-19 |
+| [golang/go](https://github.com/golang/go) | The Go programming language | NewBSD | 2015-10-19 |
+| [golang/mobile](https://github.com/golang/mobile) | [mirror] Go on Mobile | NewBSD | 2015-10-19 |
+| [golang/text](https://github.com/golang/text) | [mirror] Go text processing support | NewBSD | 2015-10-19 |
+| [golang/example](https://github.com/golang/example) | Go example projects | Apache-2.0 | 2015-10-19 |
+| [golang/tools](https://github.com/golang/tools) | [mirror] Go Tools | NewBSD | 2015-10-18 |
+| [golang/gofrontend](https://github.com/golang/gofrontend) | Go compiler frontend (gccgo) | NewBSD | 2015-10-19 |
+| [golang/talks](https://github.com/golang/talks) | Go talks | NewBSD | 2015-10-19 |
+| [golang/review](https://github.com/golang/review) | [mirror] Tool for working with Gerrit code reviews | NewBSD | 2015-10-19 |
+| [golang/blog](https://github.com/golang/blog) | Go Blog server code and content | NewBSD | 2015-10-19 |
+| [golang/benchmarks](https://github.com/golang/benchmarks) | Benchmarks for the perf dashboard | NewBSD | 2015-10-19 |
+| [golang/debug](https://github.com/golang/debug) | [mirror] debugging tools | NewBSD | 2015-10-19 |
+| [golang/playground](https://github.com/golang/playground) | [mirror] The Go Playground | NewBSD | 2015-10-19 |
+| [golang/tour](https://github.com/golang/tour) | [mirror] A Tour of Go | NewBSD | 2015-10-19 |
+| [golang/sys](https://github.com/golang/sys) | [mirror] Go packages for low-level interaction with the operating system | NewBSD | 2015-10-19 |
+| [golang/crypto](https://github.com/golang/crypto) | [mirror] Go supplementary cryptography libraries | NewBSD | 2015-10-19 |
+| [golang/exp](https://github.com/golang/exp) | [mirror] Experimental and deprecated packages | NewBSD | 2015-10-19 |
+| [golang/protobuf](https://github.com/golang/protobuf) | Go support for Google's protocol buffers | NewBSD | 2015-10-19 |
+| [golang/lint](https://github.com/golang/lint) | This is a linter for Go source code. | NewBSD | 2015-10-19 |
+| [golang/oauth2](https://github.com/golang/oauth2) | Go OAuth2 | NewBSD | 2015-10-18 |
+| [golang/gddo](https://github.com/golang/gddo) | Go Doc Dot Org | NewBSD | 2015-10-19 |
+| [golang/image](https://github.com/golang/image) | [mirror] Go supplementary image libraries | NewBSD | 2015-10-07 |
+| [golang/build](https://github.com/golang/build) | [mirror] Continuous build and release infrastructure | NewBSD | 2015-10-14 |
+| [golang/appengine](https://github.com/golang/appengine) | Go App Engine packages | Apache-2.0 | 2015-10-19 |
+| [golang/freetype](https://github.com/golang/freetype) | The Freetype font rasterizer in the Go programming language. |  | 2015-10-19 |
+| [golang/winstrap](https://github.com/golang/winstrap) | Bootstrapping tools for windows builders | NewBSD | 2015-10-19 |
+| [golang/glog](https://github.com/golang/glog) | Leveled execution logs for Go | Apache-2.0 | 2015-10-19 |
+| [golang/mock](https://github.com/golang/mock) | GoMock is a mocking framework for the Go programming language. | Apache-2.0 | 2015-10-19 |
+| [golang/arch](https://github.com/golang/arch) | [mirror] architecture code | NewBSD | 2015-10-19 |
+| [golang/snappy](https://github.com/golang/snappy) | The Snappy compression format in the Go programming language. | NewBSD | 2015-10-19 |
+| [golang/leveldb](https://github.com/golang/leveldb) | The LevelDB key-value database in the Go programming language. | NewBSD | 2015-10-19 |
+| [golang/groupcache](https://github.com/golang/groupcache) | groupcache is a caching and cache-filling library, intended as a replacement for memcached in many cases. | Apache-2.0 | 2015-10-19 |
+| [golang/geo](https://github.com/golang/geo) | S2 geometry library in Go | Apache-2.0 | 2015-10-19 |
+
+
 ### jpoirier
 
 | Package | Description | License | Updated |
