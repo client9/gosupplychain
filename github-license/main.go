@@ -4,13 +4,13 @@ package main
 //
 //
 import (
-	"strings"
-	"fmt"
 	"flag"
+	"fmt"
 	"log"
 	"os"
+	"strings"
 
-//	"text/template"
+	//	"text/template"
 
 	"github.com/client9/gosupplychain"
 )
