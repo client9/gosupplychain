@@ -28,6 +28,7 @@ reports/github-users.md: Makefile
 		mattn \
 		miekg \
 		mitchellh \
+		opennota \
 		tinylib \
 		tj \
 		philhofer \
