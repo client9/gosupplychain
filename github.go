@@ -170,7 +170,7 @@ func (gh GitHub) GuessLicenseFromRepo(owner string, repo string, sha string) (li
 			out = append(out, filename.Path)
 			body, err := gh.GetFileContents(owner, repo, sha, filename.Path)
 			if err != nil {
-				return license.License{}, fmt.Errorf("Unable to download %s: %s", filename, err)
+				return license.License{}, fmt.Errorf("unable to download %s: %s", filename, err)
 			}
 			lic := license.License{
 				Text: body,
