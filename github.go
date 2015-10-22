@@ -166,7 +166,7 @@ func (gh GitHub) GuessLicenseFromRepo(owner string, repo string, sha string) (li
 	}
 	out := []string{}
 	for _, filename := range files {
-		if IsPossibleLicenseFile(filename.Path) {
+		if IsLicenseFile(filename.Path) {
 			out = append(out, filename.Path)
 			body, err := gh.GetFileContents(owner, repo, sha, filename.Path)
 			if err != nil {
