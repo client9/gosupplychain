@@ -14,6 +14,7 @@ func TestFiles(t *testing.T) {
 		legal    bool
 	}{
 		{"license", true, true},
+		{"License", true, true},
 		{"LICENSE.md", true, true},
 		{"LICENSE.rst", true, true},
 		{"LICENSE.txt", true, true},
