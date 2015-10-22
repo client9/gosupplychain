@@ -5,8 +5,21 @@ Tools to help audit dependencies, check licenses, and create bill-of-materials
 
 ### Related projects
 
-* [goreportcard](http://goreportcard.com) Online service to evaluate golang packages
+#### Libraries
+
 * [go-license](https://github.com/ryanuber/go-license) golang package to detect OSS licenses
-* [licentia](https://github.com/c4milo/licentia) Manage and update license files
+
+#### Services
+
+* [goreportcard](http://goreportcard.com) Online service to evaluate golang packages
+* [libraries.io](https://libraries.io/go) Allows searching and filtering of golang libraries by license type
+
+#### Tools
+
 * [godep](https://github.com/tools/godep) golang tool to do "vendoring"
+* [licentia](https://github.com/c4milo/licentia) Manage and update license files
+* [anderson]((https://github.com/xoebus/anderson) tool to white and blacklist licenses in your golang project
+
+### Specs
+
 * [Golang Vendor Experiments spec](https://docs.google.com/document/d/1Bz5-UB7g2uPBdOx-rw5t9MxJwkfpx90cqG9AFL0JAYo/edit)

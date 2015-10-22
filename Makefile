@@ -23,6 +23,7 @@ reports/github-users.md: Makefile
 	go run ./github-search/main.go \
 		alecthomas \
 		araddon	\
+		azer \
 		BurntSushi \
 		davecheney \
 		fatih \
