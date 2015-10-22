@@ -48,4 +48,4 @@ reports/golang-contributors.md: Makefile
 
 clean:
 	rm -f *~
-	rm -f people.md corp.md
+
