@@ -18,7 +18,7 @@ Tools to help audit dependencies, check licenses, and create bill-of-materials
 
 * [godep](https://github.com/tools/godep) golang tool to do "vendoring"
 * [licentia](https://github.com/c4milo/licentia) Manage and update license files
-* [anderson]((https://github.com/xoebus/anderson) tool to white and blacklist licenses in your golang project
+* [anderson](https://github.com/xoebus/anderson) tool to white and blacklist licenses in your golang project
 
 ### Specs
 
