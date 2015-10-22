@@ -192,6 +192,42 @@
 | [fatih/amqp-examples](https://github.com/fatih/amqp-examples) | Examples to show basic amqp commands in different languages |  | 2015-08-01 |
 
 
+### kisielk
+
+| Package | Description | License | Updated |
+|---------|-------------|---------|---------|
+| [kisielk/errcheck](https://github.com/kisielk/errcheck) | errcheck checks that you checked errors. | MIT | 2015-10-21 |
+| [kisielk/sqlstruct](https://github.com/kisielk/sqlstruct) | sqlstruct provides some convenience functions for using structs with go's database/sql package | MIT | 2015-10-04 |
+| [kisielk/gotool](https://github.com/kisielk/gotool) | A library of some of the utility functions provided by (but not exported) by cmd/go | MIT | 2015-09-17 |
+| [kisielk/raven-go](https://github.com/kisielk/raven-go) | raven-go is a Go client for Sentry | MIT | 2015-10-20 |
+| [kisielk/og-rek](https://github.com/kisielk/og-rek) | ogórek is a Go library for encoding and decoding pickles. | MIT | 2015-06-04 |
+| [kisielk/vendorize](https://github.com/kisielk/vendorize) | vendorize is a tool for vendorizing go imports, including transitive dependencies | MIT | 2015-05-19 |
+| [kisielk/godepgraph](https://github.com/kisielk/godepgraph) | A Go dependency graph visualization tool | MIT | 2015-10-20 |
+| [kisielk/monome](https://github.com/kisielk/monome) | Go library for Monome | MIT | 2015-02-21 |
+| [kisielk/scl](https://github.com/kisielk/scl) | Package scl is for reading and writing files in the Scala scale format. | MIT | 2015-06-29 |
+| [kisielk/shapeshifter](https://github.com/kisielk/shapeshifter) |  |  | 2014-10-23 |
+| [kisielk/goflamegraph](https://github.com/kisielk/goflamegraph) | FlameGraphs for Go |  | 2015-08-11 |
+| [kisielk/vigo](https://github.com/kisielk/vigo) | Vi in Go | MIT | 2015-10-14 |
+| [kisielk/gorge](https://github.com/kisielk/gorge) | gorge is a Go library for interacting with GridEngine | MIT | 2014-09-03 |
+| [kisielk/er101](https://github.com/kisielk/er101) | Package er101 is a Go library for working with snapshots from the Orthognal Devices ER-101 sequencer |  | 2014-06-26 |
+| [kisielk/gostatsd](https://github.com/kisielk/gostatsd) | An implementation of Etsy's statsd in Go | MIT | 2015-09-05 |
+| [kisielk/whisper-go](https://github.com/kisielk/whisper-go) | A golang library for whisper databases | Apache-2.0 | 2015-02-27 |
+| [kisielk/bigset](https://github.com/kisielk/bigset) | Package bigset implements a set type for storing non-negative integers using the Go standard library's math/big package. | MIT | 2014-01-09 |
+| [kisielk/mutator](https://github.com/kisielk/mutator) | Performs mutations on Go code | MIT | 2015-02-18 |
+| [kisielk/blog](https://github.com/kisielk/blog) |  | NewBSD | 2013-12-14 |
+| [kisielk/spirytus](https://github.com/kisielk/spirytus) | spirytus rektyfikowany | MIT | 2013-12-13 |
+| [kisielk/jsonrpc-example](https://github.com/kisielk/jsonrpc-example) | Example of using Go's JSON-RPC from other languages. | MIT | 2015-10-10 |
+| [kisielk/goversiontags](https://github.com/kisielk/goversiontags) | A demonstration of go version tags |  | 2013-11-20 |
+| [kisielk/gosrc](https://github.com/kisielk/gosrc) | gosrc.org |  | 2013-11-20 |
+| [kisielk/goxmind](https://github.com/kisielk/goxmind) | A Go library for working with XMind files. |  | 2014-01-15 |
+| [kisielk/neo4j-go](https://github.com/kisielk/neo4j-go) | Go library for the Neo4j REST API |  | 2013-11-20 |
+| [kisielk/cmd](https://github.com/kisielk/cmd) | A package for creating line-oriented interactive interpreters | MIT | 2015-01-23 |
+| [kisielk/rosalind](https://github.com/kisielk/rosalind) | Solutions to problems from http://rosalind.info/ |  | 2013-09-29 |
+| [kisielk/set](https://github.com/kisielk/set) | set is a Go library for working with finite sets | MIT | 2013-12-02 |
+| [kisielk/gojunit](https://github.com/kisielk/gojunit) | JUnit XML formatter for Go test output | MIT | 2014-01-09 |
+| [kisielk/gcfg3](https://github.com/kisielk/gcfg3) | Experiments in configuration management with Go |  | 2014-01-13 |
+
+
 ### mattn
 
 | Package | Description | License | Updated |

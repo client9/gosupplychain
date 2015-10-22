@@ -23,3 +23,4 @@ Tools to help audit dependencies, check licenses, and create bill-of-materials
 ### Specs
 
 * [Golang Vendor Experiments spec](https://docs.google.com/document/d/1Bz5-UB7g2uPBdOx-rw5t9MxJwkfpx90cqG9AFL0JAYo/edit)
+* [Original notes](https://github.com/golang/go/commit/183cc0cd41f06f83cb7a2490a499e3f9101befff)
