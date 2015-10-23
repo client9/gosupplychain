@@ -40,6 +40,7 @@ reports/github-users.md: Makefile
 		BurntSushi \
 		davecheney \
 		fatih \
+		freeformz \
 		kisielk	\
 		mattn \
 		miekg \
