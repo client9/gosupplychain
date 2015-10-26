@@ -9,6 +9,7 @@ import (
 
 	//	"github.com/client9/go-license"
 	"github.com/client9/gosupplychain"
+	"github.com/client9/gosupplychain/golist"
 )
 
 var bomTemplate = `
@@ -19,15 +20,6 @@ var bomTemplate = `
 {{ .Commit }}
 {{ .License }} {{ (index $.License .License).FullName }}
 {{ .LicenseLink }}
-{{ end }}
-`
-
-var bomTemplate2 = `
-{{ range .Depends }}
-NAME: {{ .Name }}
-IMPORT: {{ .ImportPath }}
-ROOT {{ .Root }}
-DOC {{ .Doc }}
 {{ end }}
 `
 
@@ -43,7 +35,7 @@ func main() {
 		log.Fatalf("Unable to load dependencies: %s", err)
 	}
 
-	t, err := template.New("test").Parse(bomTemplate)
+	t, err := template.New("internal").Funcs(golist.TemplateFuncMap()).Parse(bomTemplate)
 	if err != nil {
 		log.Fatalf("Template init failed: %s", err)
 	}
