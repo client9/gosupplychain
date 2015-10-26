@@ -64,5 +64,5 @@ reports/golang-contributors.md: Makefile
 
 clean:
 	go clean ./...
-	rm -f *~
+	find . -name '*~' | xargs rm -f
 
