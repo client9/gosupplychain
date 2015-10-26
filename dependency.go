@@ -9,7 +9,6 @@ import (
 	"net/mail"
 	"os/exec"
 	"path/filepath"
-	"sort"
 	"strconv"
 	"strings"
 
@@ -236,33 +235,4 @@ func removeIfSubstring(alist []string, blist []string) []string {
 		}
 	}
 	return out
-}
-
-// AddParents adds parent depedencies
-//
-// e.g. given
-//   golang.org/x/crypto/hmac
-//
-// then the following are added
-//   golang.org/x/crypto
-//   golang.org/x/crypto/hmac
-//
-// Sometimes licenses are in the child directory, or the parent directory
-//
-func addParents(pkgs []string) []string {
-	uniq := make(map[string]bool, len(pkgs))
-	for _, pkg := range pkgs {
-		// ignore items with 2 parts, and add all subdirectories
-		parts := strings.Split(pkg, "/")
-		for i := 3; i <= len(parts); i++ {
-			newpath := strings.Join(parts[0:i], "/")
-			uniq[newpath] = true
-		}
-	}
-	paths := make([]string, 0, len(uniq))
-	for k := range uniq {
-		paths = append(paths, k)
-	}
-	sort.Strings(paths)
-	return paths
 }
