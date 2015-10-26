@@ -1,4 +1,4 @@
-package gosupplychain
+package golist
 
 import (
 	//	"log"

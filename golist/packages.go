@@ -1,4 +1,4 @@
-package gosupplychain
+package golist
 
 import (
 	"bufio"
@@ -68,11 +68,11 @@ type Package struct {
 	XTestImports []string // imports from XTestGoFiles
 }
 
-// GoListPackages is a wrapper around `go list -e -json package...`
+// Packages is a wrapper around `go list -e -json package...`
 //  golang doesnt expose this in a API
 //  inpsired by github.com/tools/godep which also doesnt expose this
 //  as a library
-func GoListPackages(name ...string) ([]Package, error) {
+func Packages(name ...string) ([]Package, error) {
 	if len(name) == 0 {
 		return nil, nil
 	}
@@ -109,9 +109,9 @@ func GoListPackages(name ...string) ([]Package, error) {
 	return out, nil
 }
 
-// GoListStd calls `go list std` to return a list of standard packages
+// Std calls `go list std` to return a list of standard packages
 //  This functionality is not exported programmatically.
-func GoListStd() ([]string, error) {
+func Std() ([]string, error) {
 	cmd := exec.Command("go", "list", "std")
 	cmd.Stderr = os.Stderr
 	stdout, err := cmd.StdoutPipe()
@@ -139,10 +139,10 @@ func GoListStd() ([]string, error) {
 	return std, nil
 }
 
-// GoListDeps list all depedencies for the given
+// Deps list all depedencies for the given
 // list of package paths names returned in sorted order, or error
 //
-func GoListDeps(name ...string) ([]string, error) {
+func Deps(name ...string) ([]string, error) {
 	if len(name) == 0 {
 		return nil, nil
 	}
