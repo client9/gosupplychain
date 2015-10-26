@@ -11,6 +11,7 @@ import (
 	"os/exec"
 	"sort"
 	"strings"
+	"text/template"
 )
 
 // Context is similar to
@@ -195,12 +196,13 @@ func Deps(name ...string) ([]string, error) {
 	return paths, nil
 }
 
-/*
-fm := template.FuncMap{
-	"join":    strings.Join,
-	"context": context,
+// TemplateFuncMap recreates the template environment provided in 'go list'
+func TemplateFuncMap() template.FuncMap {
+	return template.FuncMap{
+		"join":    strings.Join,
+		"context": NewContext,
+	}
 }
-*/
 
 const contextTemplate = `{{ with context }}{{ .GOARCH }}
 {{ .GOOS }}

@@ -49,7 +49,7 @@ func TestNewContext(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Unable to get context: %s", err)
 	}
-	if c.GOARCH != "amd64" {
+	if c.GOARCH != "" {
 		t.Errorf("GOARCH not set correctly: %q", c.GOARCH)
 	}
 }
