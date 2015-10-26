@@ -8,7 +8,7 @@ import (
 // TestGoListStd tests GoListStd.  This is really over kill
 //  for the current implimentation, but previous one was much weirder
 func TestGoListStd(t *testing.T) {
-	pkgs, err := GoListStd()
+	pkgs, err := Std()
 	if err != nil {
 		t.Fatalf("Unable to get standard packages: %s", err)
 	}
@@ -41,5 +41,15 @@ func TestGoListStd(t *testing.T) {
 				t.Errorf("case %d: path %q is a standard package", pos, tt.path)
 			}
 		}
+	}
+}
+
+func TestNewContext(t *testing.T) {
+	c, err := NewContext()
+	if err != nil {
+		t.Fatalf("Unable to get context: %s", err)
+	}
+	if c.GOARCH != "amd64" {
+		t.Errorf("GOARCH not set correctly: %q", c.GOARCH)
 	}
 }

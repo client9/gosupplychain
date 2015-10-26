@@ -3,13 +3,30 @@ package golist
 import (
 	"bufio"
 	"encoding/json"
+	"fmt"
 	"io"
 	//	"fmt"
 	"log"
 	"os"
 	"os/exec"
 	"sort"
+	"strings"
 )
+
+// Context is similar to
+// // https://github.com/golang/go/blob/master/src/cmd/go/context.go
+type Context struct {
+	GOARCH        string   // target architecture
+	GOOS          string   // target operating system
+	GOROOT        string   // Go root
+	GOPATH        string   // Go path
+	CgoEnabled    bool     // whether cgo can be used
+	UseAllFiles   bool     // use files regardless of +build lines, file names
+	Compiler      string   // compiler to assume when computing target paths
+	BuildTags     []string // build constraints to match in +build lines
+	ReleaseTags   []string // releases the current release is compatible with
+	InstallSuffix string   // suffix to use in the name of the install dir
+}
 
 // A PackageError describes an error loading information about a package.
 type PackageError struct {
@@ -176,4 +193,52 @@ func Deps(name ...string) ([]string, error) {
 	}
 	sort.Strings(paths)
 	return paths, nil
+}
+
+/*
+fm := template.FuncMap{
+	"join":    strings.Join,
+	"context": context,
+}
+*/
+
+const contextTemplate = `{{ with context }}{{ .GOARCH }}
+{{ .GOOS }}
+{{ .GOROOT }}
+{{ .GOPATH }}
+{{ .CgoEnabled }}
+{{ .UseAllFiles }}
+{{ .Compiler }}
+{{ join .BuildTags "," }}
+{{ join .ReleaseTags "," }}
+{{ .InstallSuffix }}{{ end }}`
+
+// NewContext generates a context object
+func NewContext() (*Context, error) {
+	c := Context{}
+	cmd := exec.Command("go", "list", "-f", contextTemplate)
+	outbytes, err := cmd.Output()
+	if err != nil {
+		return nil, err
+	}
+	lines := strings.Split(string(outbytes), "\n")
+	if len(lines) != 10 {
+		return nil, fmt.Errorf("expected 10 outlines from golist, got %d with %q", len(lines), string(outbytes))
+	}
+	c.GOARCH = lines[0]
+	c.GOOS = lines[1]
+	c.GOROOT = lines[2]
+	c.GOPATH = lines[3]
+	if lines[4] == "true" {
+		c.CgoEnabled = true
+	}
+	if lines[5] == "true" {
+		c.UseAllFiles = true
+	}
+	c.Compiler = lines[6]
+	c.BuildTags = strings.Split(lines[7], ",")
+	c.ReleaseTags = strings.Split(lines[8], ",")
+	c.InstallSuffix = lines[9]
+
+	return &c, nil
 }
