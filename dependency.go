@@ -1,20 +1,27 @@
 package gosupplychain
 
+//import ("github.com/golang/gddo/gosrc"
+//	"net/http"
+//)
 import (
-	"bufio"
-	//	"fmt"
 	"log"
-	"net/mail"
 
-	//	"os"
+	"net/mail"
 	"os/exec"
 	"path/filepath"
 	"sort"
 	"strconv"
 	"strings"
 
+	"github.com/client9/gosupplychain/golist"
+
+	"golang.org/x/tools/go/vcs"
+
 	"github.com/ryanuber/go-license"
 )
+
+// Notes:
+//  go-source meta tag:  https://github.com/golang/gddo/wiki/Source-Code-Links
 
 // ExternalDependency contains meta data on a external dependency
 type ExternalDependency struct {
@@ -56,13 +63,6 @@ func GoPkgInToGitHub(name string) string {
 	return "https://github.com/" + parts[1] + "/" + pname + "/tree/" + version
 }
 
-// GitFetch executes a "git fetch" command
-func GitFetch(dir string) error {
-	cmd := exec.Command("git", "fetch")
-	cmd.Dir = dir
-	return cmd.Run()
-}
-
 // GitCommitsBehind counts the number of commits a directory is behind master
 func GitCommitsBehind(dir string, hash string) (int, error) {
 	// the following doesnt work sometimes
@@ -78,35 +78,29 @@ func GitCommitsBehind(dir string, hash string) (int, error) {
 
 // GetLastCommit returns meta data on the last commit
 func GetLastCommit(dir string) (Commit, error) {
-	/*
-		err := GitFetch(dir)
-		if err != nil {
-			log.Fatalf("unable to fetch: %s", err)
-		}
-	*/
-	//log.Printf("Directory is %s", dir)
+	log.Printf("Directory is %s", dir)
 	cmd := exec.Command("git", "log", "-1", "--format=Commit: %H%nDate: %aD%nSubject: %s%n%n%b%n")
 	cmd.Dir = dir
 	msg, err := cmd.Output()
 	if err != nil {
+		log.Printf("git log error: %s", err)
 		return Commit{}, err
 	}
 	//log.Printf("GOT %s", string(msg))
 	r := strings.NewReader(string(msg))
 	m, err := mail.ReadMessage(r)
 	if err != nil {
+		log.Printf("git log parse error: %s", err)
 		return Commit{}, err
 	}
 	header := m.Header
 
-	//GitFetch(dir)
-	behind, _ := GitCommitsBehind(dir, header.Get("Commit"))
+	//behind, _ := GitCommitsBehind(dir, header.Get("Commit"))
 
 	return Commit{
 		Date:    header.Get("Date"),
 		Hash:    header.Get("Commit"),
 		Subject: header.Get("Subject"),
-		Behind:  behind,
 	}, nil
 }
 
@@ -130,109 +124,115 @@ func GetLicense(rootpath, name string) ExternalDependency {
 }
 
 // LoadDependencies is not done
-func LoadDependencies(root string, pkgs []string, ignores []string) []ExternalDependency {
+func LoadDependencies(pkgs []string, ignores []string) ([]ExternalDependency, error) {
 
-	pkgs, err := ListDependenciesFromPackages(pkgs...)
+	stdlib, err := golist.Std()
 	if err != nil {
-		log.Printf("FAILED: %s", err)
-		return nil
+		return nil, err
 	}
 
-	pkgs = RemoveStandardPackages(pkgs)
-	pkgs = RemoveIgnores(pkgs, ignores)
-	pkgs = AddParents(pkgs)
+	pkgs, err = golist.Deps(pkgs...)
+	if err != nil {
+		return nil, err
+	}
 
-	externals := make([]ExternalDependency, 0, 100)
+	// faster to remove stdlib
+	pkgs = removeIfEquals(pkgs, stdlib)
+	pkgs = removeIfSubstring(pkgs, ignores)
 
-	for _, v := range pkgs {
-		e := GetLicense(root, v)
-		if e.License == "" && len(strings.Split(v, "/")) > 3 {
-			continue
+	deps, err := golist.Packages(pkgs...)
+	if err != nil {
+		return nil, err
+	}
+
+	visited := make(map[string]bool, len(deps))
+
+	out := make([]ExternalDependency, 0, len(deps))
+	for _, v := range deps {
+		src := filepath.Join(v.Root, "src")
+		path := filepath.Join(src, filepath.FromSlash(v.ImportPath))
+		cmd, root, err := vcs.FromDir(path, src)
+		if err != nil {
+			log.Printf("  failed %s", err)
+		} else {
+			log.Printf("  got root %s  cmd=%s", root, cmd.Cmd)
 		}
 
-		commit, err := GetLastCommit(filepath.Join(root, "src", v))
+		rr, err := vcs.RepoRootForImportPath(v.ImportPath, false)
+		if err != nil {
+			log.Printf("   unable to get repo root for %s: %s", v.ImportPath, err)
+		} else {
+			log.Printf("   repo = %s root=%s", rr.Repo, rr.Root)
+		}
+
+		visited[v.ImportPath] = true
+
+		e := ExternalDependency{
+			Package: v.ImportPath,
+		}
+		l, err := license.NewFromDir(path)
 		if err == nil {
-			e.Commit = commit.Hash
-			e.Date = commit.Date
-			e.Behind = commit.Behind
+			e.File = filepath.Base(l.File)
+			e.License = l.Type
+		} else if !visited[rr.Root] {
+			visited[rr.Root] = true
+			path = filepath.Join(src, filepath.FromSlash(rr.Root))
+			l, err = license.NewFromDir(path)
+			if err == nil {
+				e.Package = rr.Root
+				e.File = filepath.Base(l.File)
+				e.License = l.Type
+			}
+		} else {
+			continue
+		}
+		c, err := GetLastCommit(path)
+		if err == nil {
+			e.Commit = c.Hash
+			e.Date = c.Date
 		}
 
 		if strings.HasPrefix(e.Package, "github.com") && e.Commit != "" && e.File != "" {
 			e.LicenseLink = "https://" + e.Package + "/blob/" + e.Commit + "/" + e.File
 		} else if strings.HasPrefix(e.Package, "golang.org/x/") && e.Commit != "" && e.File != "" {
-			name := filepath.Base(e.Package)
-			e.LicenseLink = "https://go.googlesource.com/" + name + "/+/" + e.Commit + "/" + e.File
+			e.LicenseLink = "https://github.com/golang/" + e.Package[13:] + "/blob/" + e.Commit + "/" + e.File
 		} else if strings.HasPrefix(e.Package, "gopkg.in") && e.Commit != "" && e.File != "" {
 			e.LicenseLink = GoPkgInToGitHub(e.Package) + "/" + e.File
 		}
-
-		externals = append(externals, e)
-
+		out = append(out, e)
 	}
-	return externals
+	return out, err
 }
 
-// ListDependenciesFromPackages list all depedencies for the given list of paths
-//  returns in sorted order, or error
-func ListDependenciesFromPackages(name ...string) ([]string, error) {
-	if len(name) == 0 {
-		return nil, nil
-	}
-	args := []string{"list", "-f", `{{  join .Deps "\n"}}`}
-	args = append(args, name...)
-	//	log.Printf("CMD: %v", args)
-	cmd := exec.Command("go", args...)
-	stdout, err := cmd.StdoutPipe()
-	if err != nil {
-		return nil, err
-	}
-	err = cmd.Start()
-	if err != nil {
-		return nil, err
-	}
-	uniq := make(map[string]bool)
-	scanner := bufio.NewScanner(stdout)
-	for scanner.Scan() {
-		uniq[scanner.Text()] = true
-	}
-	if err := scanner.Err(); err != nil {
-		return nil, err
-	}
-	if err := cmd.Wait(); err != nil {
-		log.Fatalf("Wait failed: %s", err)
-	}
-	paths := make([]string, 0, len(uniq))
-	for k := range uniq {
-		paths = append(paths, k)
-	}
-	sort.Strings(paths)
-	return paths, nil
-}
-
-// RemoveStandardPackages removes standard packages using a heuristic
-func RemoveStandardPackages(pkgs []string) []string {
-	out := make([]string, 0, len(pkgs))
-	for _, pkg := range pkgs {
-		// has dots.. not part of standard library
-		if strings.Index(pkg, ".") != -1 {
-			out = append(out, pkg)
+// generic []string function, remove elements of A that are in B
+func removeIfEquals(alist []string, blist []string) []string {
+	out := make([]string, 0, len(alist))
+	for _, a := range alist {
+		add := true
+		for _, b := range blist {
+			if a == b {
+				add = false
+			}
+		}
+		if add {
+			out = append(out, a)
 		}
 	}
 	return out
 }
 
-// RemoveIgnores removes packages we dont want included
-func RemoveIgnores(pkgs []string, ignores []string) []string {
-	out := make([]string, 0, len(pkgs))
-	for _, pkg := range pkgs {
+// removes elements of A that substring match any of B
+func removeIfSubstring(alist []string, blist []string) []string {
+	out := make([]string, 0, len(alist))
+	for _, a := range alist {
 		add := true
-		for _, pattern := range ignores {
-			if strings.Index(pkg, pattern) != -1 {
+		for _, b := range blist {
+			if strings.Index(a, b) != -1 {
 				add = false
 			}
 		}
 		if add {
-			out = append(out, pkg)
+			out = append(out, a)
 		}
 	}
 	return out
@@ -249,7 +249,7 @@ func RemoveIgnores(pkgs []string, ignores []string) []string {
 //
 // Sometimes licenses are in the child directory, or the parent directory
 //
-func AddParents(pkgs []string) []string {
+func addParents(pkgs []string) []string {
 	uniq := make(map[string]bool, len(pkgs))
 	for _, pkg := range pkgs {
 		// ignore items with 2 parts, and add all subdirectories
