@@ -17,7 +17,7 @@ var bomTemplate = `
 {{ .File }}
 {{ .Date }}
 {{ .Commit }}
-{{ .License }}
+{{ .License }} {{ (index $.License .License).FullName }}
 {{ .LicenseLink }}
 {{ end }}
 `
@@ -50,6 +50,7 @@ func main() {
 
 	err = t.Execute(os.Stdout, map[string]interface{}{
 		"Depends": deps,
+		"License": gosupplychain.Meta,
 	})
 	if err != nil {
 		log.Fatalf("Template exec failed: %s", err)
