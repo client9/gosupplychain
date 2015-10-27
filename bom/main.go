@@ -14,12 +14,13 @@ import (
 
 var bomTemplate = `
 {{ range .Depends }}
-{{ .Package }}
-{{ .File }}
-{{ .Date }}
-{{ .Commit }}
-{{ .License }} {{ (index $.License .License).FullName }}
-{{ .LicenseLink }}
+{{ .ImportPath }}
+{{ .Commit.Date }}
+{{ .Commit.Rev }}
+{{ .License.File }}
+{{ .License.Type }} {{ (index $.License .License.Type).FullName }}
+{{ .Project.Repo }}
+{{ .Project.LicenseLink }}
 {{ end }}
 `
 

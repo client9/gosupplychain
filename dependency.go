@@ -22,24 +22,53 @@ import (
 // Notes:
 //  go-source meta tag:  https://github.com/golang/gddo/wiki/Source-Code-Links
 
-// ExternalDependency contains meta data on a external dependency
-type ExternalDependency struct {
-	Package     string
-	File        string
-	License     string
+// Project contains an amalgamation of package, commit, repo, and license information
+type Project struct {
+	Repo        string
 	LicenseLink string
-	Commit      string
-	Date        string
-	Behind      int
 }
 
 // Commit contains meta data about a single commit
 type Commit struct {
-	Hash    string
+	Rev     string
 	Date    string
 	Subject string
 	Body    string
 	Behind  int
+}
+
+// Dependency contains meta data on a external dependency
+type Dependency struct {
+	golist.Package
+	Commit  Commit
+	License license.License
+	Project Project
+}
+
+// LinkToFile returns a URL that links to particular revision of a
+// file or empty
+//
+func LinkToFile(pkg, rev, file string) string {
+	/*
+		rev := e.Commit.Rev
+		file := e.License.File
+		pkg := d.ImportPath
+	*/
+	if rev == "" || file == "" {
+		return ""
+	}
+
+	switch {
+	case strings.HasPrefix(pkg, "github.com"):
+		return "https://" + pkg + "/blob/" + rev + "/" + file
+	case strings.HasPrefix(pkg, "golang.org/x/"):
+		return "https://github.com/golang/" + pkg[13:] + "/blob/" + rev + "/" + file
+	case strings.HasPrefix(pkg, "gopkg.in"):
+		return GoPkgInToGitHub(pkg) + "/" + file
+	default:
+		return ""
+	}
+
 }
 
 // GoPkgInToGitHub converts a "gopkg.in" to a github repo link
@@ -98,32 +127,25 @@ func GetLastCommit(dir string) (Commit, error) {
 
 	return Commit{
 		Date:    header.Get("Date"),
-		Hash:    header.Get("Commit"),
+		Rev:     header.Get("Commit"),
 		Subject: header.Get("Subject"),
+		Behind:  -1,
 	}, nil
 }
 
 // GetLicense returns licensing info
-func GetLicense(rootpath, name string) ExternalDependency {
-	sw := ExternalDependency{
-		Package: name,
-		File:    "",
-		License: "",
-	}
+func GetLicense(path string) license.License {
 
-	l, err := license.NewFromDir(filepath.Join(rootpath, "src", name))
+	l, err := license.NewFromDir(path)
 	if err != nil {
-		//log.Printf(err.Error())
-		return sw
+		return license.License{}
 	}
-
-	sw.File = filepath.Base(l.File)
-	sw.License = l.Type
-	return sw
+	l.File = filepath.Base(l.File)
+	return *l
 }
 
 // LoadDependencies is not done
-func LoadDependencies(pkgs []string, ignores []string) ([]ExternalDependency, error) {
+func LoadDependencies(pkgs []string, ignores []string) ([]Dependency, error) {
 
 	stdlib, err := golist.Std()
 	if err != nil {
@@ -146,7 +168,7 @@ func LoadDependencies(pkgs []string, ignores []string) ([]ExternalDependency, er
 
 	visited := make(map[string]bool, len(deps))
 
-	out := make([]ExternalDependency, 0, len(deps))
+	out := make([]Dependency, 0, len(deps))
 	for _, v := range deps {
 		src := filepath.Join(v.Root, "src")
 		path := filepath.Join(src, filepath.FromSlash(v.ImportPath))
@@ -166,38 +188,25 @@ func LoadDependencies(pkgs []string, ignores []string) ([]ExternalDependency, er
 
 		visited[v.ImportPath] = true
 
-		e := ExternalDependency{
-			Package: v.ImportPath,
+		e := Dependency{
+			Package: v,
 		}
-		l, err := license.NewFromDir(path)
-		if err == nil {
-			e.File = filepath.Base(l.File)
-			e.License = l.Type
-		} else if !visited[rr.Root] {
+		e.Project.Repo = rr.Repo
+		e.License = GetLicense(path)
+		if e.License.Type == "" && !visited[rr.Root] {
 			visited[rr.Root] = true
+
+			// BUG: really need to call go-list again to get info
 			path = filepath.Join(src, filepath.FromSlash(rr.Root))
-			l, err = license.NewFromDir(path)
-			if err == nil {
-				e.Package = rr.Root
-				e.File = filepath.Base(l.File)
-				e.License = l.Type
-			}
-		} else {
-			continue
+			e.License = GetLicense(path)
 		}
-		c, err := GetLastCommit(path)
+		commit, err := GetLastCommit(path)
 		if err == nil {
-			e.Commit = c.Hash
-			e.Date = c.Date
+			e.Commit = commit
 		}
 
-		if strings.HasPrefix(e.Package, "github.com") && e.Commit != "" && e.File != "" {
-			e.LicenseLink = "https://" + e.Package + "/blob/" + e.Commit + "/" + e.File
-		} else if strings.HasPrefix(e.Package, "golang.org/x/") && e.Commit != "" && e.File != "" {
-			e.LicenseLink = "https://github.com/golang/" + e.Package[13:] + "/blob/" + e.Commit + "/" + e.File
-		} else if strings.HasPrefix(e.Package, "gopkg.in") && e.Commit != "" && e.File != "" {
-			e.LicenseLink = GoPkgInToGitHub(e.Package) + "/" + e.File
-		}
+		e.Project.LicenseLink = LinkToFile(e.ImportPath, e.Commit.Rev, e.License.File)
+
 		out = append(out, e)
 	}
 	return out, err
