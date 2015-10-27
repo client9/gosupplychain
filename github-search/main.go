@@ -22,7 +22,7 @@ var SearchMarkdownTemplate = `
 
 | Package | Description | License | Updated |
 |---------|-------------|---------|---------|
-{{ range $user.Repos }}| [{{ .Name }}](https://github.com/{{ .Name }}) | {{ .Description }} | {{ (index $.Licenses .Name).Type }} | {{ .Updated.Format "2006-01-02" }} |
+{{ range $user.Repos }}| [{{ .Name }}](https://github.com/{{ .Name }}) | {{ .Description }} | {{ with (index $.Licenses .Name) }} [{{ .Type }}]({{ .File }}){{ end }} | {{ .Updated.Format "2006-01-02" }} |
 {{ end }}
 {{ end }}
 `
