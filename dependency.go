@@ -5,7 +5,7 @@ package gosupplychain
 //)
 import (
 	"log"
-
+	"net/http"
 	"net/mail"
 	"os/exec"
 	"path/filepath"
@@ -19,9 +19,11 @@ import (
 	"github.com/ryanuber/go-license"
 )
 
+// Project contains VCS project data
 // Notes:
 //  go-source meta tag:  https://github.com/golang/gddo/wiki/Source-Code-Links
-
+//     https://github.com/golang/gddo/blob/master/gosrc/gosrc.go
+//
 // Project contains an amalgamation of package, commit, repo, and license information
 type Project struct {
 	VcsName     string
@@ -69,28 +71,59 @@ func LinkToFile(pkg, file, rev string) string {
 	case strings.HasPrefix(pkg, "gopkg.in"):
 		return GoPkgInToGitHub(pkg) + "/" + file
 	default:
-		return ""
+		projectURL := "https://" + pkg
+		resp, err := http.Get(projectURL + "?go-get=1")
+		if err != nil {
+			return projectURL
+		}
+		defer resp.Body.Close()
+		_, mgs, err := parseMetaGo(resp.Body)
+		if err != nil || mgs == nil {
+			return projectURL
+		}
+		return mgs.FileURL("/", file)
 	}
 }
 
 // GoPkgInToGitHub converts a "gopkg.in" to a github repo link
 func GoPkgInToGitHub(name string) string {
+	dir := ""
+	var pkgversion string
+	var user string
 	parts := strings.Split(name, "/")
+	if len(parts) < 2 {
+		return ""
+	}
 	if parts[0] != "gopkg.in" {
 		return ""
 	}
-	pname := ""
-	version := ""
-	if strings.Index(parts[1], ".") != -1 {
-		versionparts := strings.SplitN(parts[1], ".", 2)
-		pname = versionparts[0]
-		version = versionparts[1]
-		return "https://github.com/go-" + pname + "/" + pname + "/blob/" + version + "/" + parts[2]
+
+	idx := strings.Index(parts[1], ".")
+	if idx != -1 {
+		pkgversion = parts[1]
+		if len(parts) > 2 {
+			dir = "/" + strings.Join(parts[2:], "/")
+		}
+	} else {
+		user = parts[1]
+		pkgversion = parts[2]
+		if len(parts) > 3 {
+			dir = "/" + strings.Join(parts[3:], "/")
+		}
 	}
-	versionparts := strings.SplitN(parts[len(parts)-1], ".", 2)
-	pname = versionparts[0]
-	version = versionparts[1]
-	return "https://github.com/" + parts[1] + "/" + pname + "/tree/" + version
+	idx = strings.Index(pkgversion, ".")
+	if idx == -1 {
+		return ""
+	}
+	pkg := pkgversion[:idx]
+	if user == "" {
+		user = "go-" + pkg
+	}
+	version := pkgversion[idx+1:]
+	if version == "v0" {
+		version = "master"
+	}
+	return "https://github.com/" + user + "/" + pkg + "/blob/" + version + dir
 }
 
 // GitCommitsBehind counts the number of commits a directory is behind master
@@ -175,8 +208,15 @@ func LoadDependencies(pkgs []string, ignores []string) ([]Dependency, error) {
 		src := filepath.Join(v.Root, "src")
 		path := filepath.Join(src, filepath.FromSlash(v.ImportPath))
 		cmd, _, err := vcs.FromDir(path, src)
+		if err != nil {
+			log.Printf("error computing vcs %s: %s", path, err)
+			continue
+		}
 		rr, err := vcs.RepoRootForImportPath(v.ImportPath, false)
-
+		if err != nil {
+			log.Printf("error computing repo for %s: %s", v.ImportPath, err)
+			continue
+		}
 		e := Dependency{
 			Package: v,
 		}
