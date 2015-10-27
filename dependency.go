@@ -48,27 +48,27 @@ type Dependency struct {
 // LinkToFile returns a URL that links to particular revision of a
 // file or empty
 //
-func LinkToFile(pkg, rev, file string) string {
-	/*
-		rev := e.Commit.Rev
-		file := e.License.File
-		pkg := d.ImportPath
-	*/
-	if rev == "" || file == "" {
+func LinkToFile(pkg, file, rev string) string {
+	if file == "" {
 		return ""
 	}
 
 	switch {
 	case strings.HasPrefix(pkg, "github.com"):
+		if rev == "" {
+			rev = "master"
+		}
 		return "https://" + pkg + "/blob/" + rev + "/" + file
 	case strings.HasPrefix(pkg, "golang.org/x/"):
+		if rev == "" {
+			rev = "master"
+		}
 		return "https://github.com/golang/" + pkg[13:] + "/blob/" + rev + "/" + file
 	case strings.HasPrefix(pkg, "gopkg.in"):
 		return GoPkgInToGitHub(pkg) + "/" + file
 	default:
 		return ""
 	}
-
 }
 
 // GoPkgInToGitHub converts a "gopkg.in" to a github repo link
@@ -205,7 +205,7 @@ func LoadDependencies(pkgs []string, ignores []string) ([]Dependency, error) {
 			e.Commit = commit
 		}
 
-		e.Project.LicenseLink = LinkToFile(e.ImportPath, e.Commit.Rev, e.License.File)
+		e.Project.LicenseLink = LinkToFile(e.ImportPath, e.License.File, e.Commit.Rev)
 
 		out = append(out, e)
 	}
