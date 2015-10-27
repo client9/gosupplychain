@@ -17,7 +17,7 @@ Tools to help audit dependencies, check licenses, and create bill-of-materials
 
 * [goreportcard](http://goreportcard.com) Online service to evaluate golang packages
 * [libraries.io](https://libraries.io/go) Allows searching and filtering of golang libraries by license type
-* [github v3 API](https://developer.github.com/v3/licenses/) Github provides an API to guess the license of a repo
+* [github v3 API](https://developer.github.com/v3/licenses/) Github provides an API to guess the license of a repo [blog](https://github.com/blog/1964-open-source-license-usage-on-github-com)
 
 #### Tools
 
