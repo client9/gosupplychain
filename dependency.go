@@ -24,6 +24,8 @@ import (
 
 // Project contains an amalgamation of package, commit, repo, and license information
 type Project struct {
+	VcsName     string
+	VcsCmd      string
 	Repo        string
 	LicenseLink string
 }
@@ -172,26 +174,16 @@ func LoadDependencies(pkgs []string, ignores []string) ([]Dependency, error) {
 	for _, v := range deps {
 		src := filepath.Join(v.Root, "src")
 		path := filepath.Join(src, filepath.FromSlash(v.ImportPath))
-		cmd, root, err := vcs.FromDir(path, src)
-		if err != nil {
-			log.Printf("  failed %s", err)
-		} else {
-			log.Printf("  got root %s  cmd=%s", root, cmd.Cmd)
-		}
-
+		cmd, _, err := vcs.FromDir(path, src)
 		rr, err := vcs.RepoRootForImportPath(v.ImportPath, false)
-		if err != nil {
-			log.Printf("   unable to get repo root for %s: %s", v.ImportPath, err)
-		} else {
-			log.Printf("   repo = %s root=%s", rr.Repo, rr.Root)
-		}
-
 		visited[v.ImportPath] = true
 
 		e := Dependency{
 			Package: v,
 		}
 		e.Project.Repo = rr.Repo
+		e.Project.VcsName = cmd.Name
+		e.Project.VcsCmd = cmd.Cmd
 		e.License = GetLicense(path)
 		if e.License.Type == "" && !visited[rr.Root] {
 			visited[rr.Root] = true
