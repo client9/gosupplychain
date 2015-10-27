@@ -168,7 +168,7 @@ func LoadDependencies(pkgs []string, ignores []string) ([]Dependency, error) {
 		return nil, err
 	}
 
-	visited := make(map[string]bool, len(deps))
+	visited := make(map[string]string, len(deps))
 
 	out := make([]Dependency, 0, len(deps))
 	for _, v := range deps {
@@ -176,7 +176,6 @@ func LoadDependencies(pkgs []string, ignores []string) ([]Dependency, error) {
 		path := filepath.Join(src, filepath.FromSlash(v.ImportPath))
 		cmd, _, err := vcs.FromDir(path, src)
 		rr, err := vcs.RepoRootForImportPath(v.ImportPath, false)
-		visited[v.ImportPath] = true
 
 		e := Dependency{
 			Package: v,
@@ -185,12 +184,37 @@ func LoadDependencies(pkgs []string, ignores []string) ([]Dependency, error) {
 		e.Project.VcsName = cmd.Name
 		e.Project.VcsCmd = cmd.Cmd
 		e.License = GetLicense(path)
-		if e.License.Type == "" && !visited[rr.Root] {
-			visited[rr.Root] = true
+		visited[v.ImportPath] = e.License.Type
 
-			// BUG: really need to call go-list again to get info
-			path = filepath.Join(src, filepath.FromSlash(rr.Root))
-			e.License = GetLicense(path)
+		// if child have no license, parent has license, continue
+		// if child has no license, parent has no license, carry on
+		if e.License.Type == "" {
+			lic, ok := visited[rr.Root]
+			if ok && lic != "" {
+				// case is child has no license, but parent does
+				// => just ignore this package
+				continue
+			}
+			// if ok && lic = "" => dont look up parent
+
+			if !ok {
+				// first time checking parent
+				parentpkg, err := golist.GetPackage(rr.Root)
+				if err == nil {
+					parent := Dependency{
+						Package: parentpkg,
+						Project: e.Project,
+					}
+					path = filepath.Join(src, filepath.FromSlash(rr.Root))
+					parent.License = GetLicense(path)
+					visited[rr.Root] = parent.License.Type
+					if parent.License.Type != "" {
+						// case child has no license, parent does
+						//  ignore child and use parent
+						e = parent
+					}
+				}
+			}
 		}
 		commit, err := GetLastCommit(path)
 		if err == nil {

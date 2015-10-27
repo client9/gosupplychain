@@ -86,6 +86,18 @@ type Package struct {
 	XTestImports []string // imports from XTestGoFiles
 }
 
+// GetPackage is a convience call to look up a single package
+func GetPackage(name string) (Package, error) {
+	pkgs, err := Packages(name)
+	if err != nil {
+		return Package{}, err
+	}
+	if len(pkgs) == 0 {
+		return Package{}, fmt.Errorf("package %q not found", name)
+	}
+	return pkgs[0], nil
+}
+
 // Packages is a wrapper around `go list -e -json package...`
 //  golang doesnt expose this in a API
 //  inpsired by github.com/tools/godep which also doesnt expose this
