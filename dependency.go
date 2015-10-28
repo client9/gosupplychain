@@ -38,7 +38,6 @@ type Commit struct {
 	Date    string
 	Subject string
 	Body    string
-	Behind  int
 }
 
 // Dependency contains meta data on a external dependency
@@ -128,6 +127,14 @@ func GoPkgInToGitHub(name string) string {
 
 // GitCommitsBehind counts the number of commits a directory is behind master
 func GitCommitsBehind(dir string, hash string) (int, error) {
+	/*
+		cmd := exec.Command("git", "fetch")
+		_, err := cmd.Output()
+		if err != nil {
+			return -1, err
+		}
+	*/
+
 	// the following doesnt work sometimes
 	//cmd := exec.Command("git", "rev-list", "..master")
 	cmd := exec.Command("git", "rev-list", "--count", "origin/master..."+hash)
@@ -158,13 +165,10 @@ func GetLastCommit(dir string) (Commit, error) {
 	}
 	header := m.Header
 
-	//behind, _ := GitCommitsBehind(dir, header.Get("Commit"))
-
 	return Commit{
 		Date:    header.Get("Date"),
 		Rev:     header.Get("Commit"),
 		Subject: header.Get("Subject"),
-		Behind:  -1,
 	}, nil
 }
 
