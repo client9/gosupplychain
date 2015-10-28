@@ -36,8 +36,13 @@ func main() {
 			log.Printf("Skipping %s", dep.ImportPath)
 			continue
 		}
+		if parts[0] == "golang.org" && parts[1] == "x" {
+			parts[0] = "github.com"
+			parts[1] = "golang"
+		}
+
 		if parts[0] != "github.com" {
-			log.Printf("Skupping %s", dep.ImportPath)
+			log.Printf("Skipping %s", dep.ImportPath)
 			continue
 		}
 
@@ -47,7 +52,7 @@ func main() {
 			continue
 		}
 
-		fmt.Printf("%s \n", dep.ImportPath)
+		fmt.Printf("%s: %s\n", dep.ImportPath, *compare.Status)
 		for pos, commit := range compare.Commits {
 			msg := ""
 			if commit.Commit.Message != nil {
