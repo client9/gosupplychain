@@ -27,6 +27,7 @@ reports/github-corporate.md: Makefile
 		timehop \
 		uber \
 		vimeo \
+		Workiva \
 		yahoo yelp > \
 	reports/github-corporate.md
 
