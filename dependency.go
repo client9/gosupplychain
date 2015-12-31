@@ -135,7 +135,7 @@ func GitCommitsBehind(dir string, hash string) (int, error) {
 		}
 	*/
 
-	// the following doesnt work sometimes
+	// the following doesn't work sometimes
 	//cmd := exec.Command("git", "rev-list", "..master")
 	cmd := exec.Command("git", "rev-list", "--count", "origin/master..."+hash)
 	cmd.Dir = dir
