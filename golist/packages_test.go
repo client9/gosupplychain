@@ -6,7 +6,7 @@ import (
 )
 
 // TestGoListStd tests GoListStd.  This is really over kill
-//  for the current implimentation, but previous one was much weirder
+//  for the current implementation, but previous one was much weirder
 func TestGoListStd(t *testing.T) {
 	pkgs, err := Std()
 	if err != nil {

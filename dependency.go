@@ -239,7 +239,7 @@ func LoadDependencies(pkgs []string, ignores []string) ([]Dependency, error) {
 				// => just ignore this package
 				continue
 			}
-			// if ok && lic = "" => dont look up parent
+			// if ok && lic = "" => don't look up parent
 
 			if !ok {
 				// first time checking parent
