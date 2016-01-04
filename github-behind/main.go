@@ -65,7 +65,8 @@ func main() {
 					msg = msg[:80] + "..."
 				}
 			}
-			fmt.Printf("    %d %s %s\n", pos, *commit.SHA, msg)
+			sha := *commit.SHA
+			fmt.Printf("    %d %s %s\n", pos, sha[0:7], msg)
 		}
 	}
 }
