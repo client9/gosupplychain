@@ -169,7 +169,7 @@ func Std() ([]string, error) {
 	return std, nil
 }
 
-// Deps list all depedencies for the given
+// Deps list all dependencies for the given
 // list of package paths names returned in sorted order, or error
 //
 func Deps(name ...string) ([]string, error) {
