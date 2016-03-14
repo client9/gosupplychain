@@ -2,6 +2,7 @@ package gosupplychain
 
 import (
 	"bytes"
+	"encoding/json"
 	"fmt"
 	"os"
 	"os/exec"
@@ -222,4 +223,27 @@ type Commit struct {
 	Author  string
 	Date    string
 	Message string
+}
+
+// GitLogAtRev is a special function to parse GitHub commits
+// TODO clearly the CMD would be better as a interface.
+func GitLogAtRev(cmd *Cmd, rootdir, rev string) ([]Commit, error) {
+	line, err := cmd.LogAtRev(rootdir, rev, `{"Commit":"%H","Author":"%an <%ae>","Date":"%ad","Message":"%f"},`)
+	if err != nil {
+		return nil, fmt.Errorf("%s Unable to get log: %s", rootdir, err)
+	}
+	if len(line) < 2 {
+		return nil, fmt.Errorf("%s Unable to find %q", rootdir, rev)
+	}
+	line = line[:len(line)-2]
+	jsonbuf := make([]byte, 0, len(line)+2)
+	jsonbuf = append(jsonbuf, '[')
+	jsonbuf = append(jsonbuf, line...)
+	jsonbuf = append(jsonbuf, ']')
+	commits := []Commit{}
+	err = json.Unmarshal(jsonbuf, &commits)
+	if err != nil {
+		return nil, fmt.Errorf("%s unable to decode: %s", rootdir, err)
+	}
+	return commits, nil
 }
