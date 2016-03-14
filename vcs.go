@@ -24,6 +24,7 @@ type TagCmd struct {
 	Pattern string // regexp to extract tags from list
 }
 
+// Cmd is a bad abstraction around a VCS command
 type Cmd struct {
 	Name string
 	Cmd  string // name of binary to invoke command

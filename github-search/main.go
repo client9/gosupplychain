@@ -11,8 +11,8 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/client9/go-license"
 	"github.com/client9/gosupplychain"
+	"github.com/ryanuber/go-license"
 )
 
 // SearchMarkdownTemplate is a sample markdown output
