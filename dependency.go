@@ -33,12 +33,16 @@ type Project struct {
 }
 
 // Commit contains meta data about a single commit
+/*
 type Commit struct {
 	Rev     string
+	Author  string
 	Date    string
 	Subject string
-	Body    string
 }
+*/
+
+//'{%n  "Commit": "%H",%n  "Author": "%an <%ae>",%n  "Date": "%ad",%n  "Message": "%f"%n},
 
 // Dependency contains meta data on a external dependency
 type Dependency struct {
@@ -167,8 +171,8 @@ func GetLastCommit(dir string) (Commit, error) {
 
 	return Commit{
 		Date:    header.Get("Date"),
-		Rev:     header.Get("Commit"),
-		Subject: header.Get("Subject"),
+		Commit:  header.Get("Commit"),
+		Message: header.Get("Subject"),
 	}, nil
 }
 
@@ -199,7 +203,6 @@ func LoadDependencies(pkgs []string, ignores []string) ([]Dependency, error) {
 	// faster to remove stdlib
 	pkgs = removeIfEquals(pkgs, stdlib)
 	pkgs = removeIfSubstring(pkgs, ignores)
-
 	deps, err := golist.Packages(pkgs...)
 	if err != nil {
 		return nil, err
@@ -265,7 +268,7 @@ func LoadDependencies(pkgs []string, ignores []string) ([]Dependency, error) {
 			e.Commit = commit
 		}
 
-		e.Project.LicenseLink = LinkToFile(e.ImportPath, e.License.File, e.Commit.Rev)
+		e.Project.LicenseLink = LinkToFile(e.ImportPath, e.License.File, e.Commit.Commit)
 
 		out = append(out, e)
 	}

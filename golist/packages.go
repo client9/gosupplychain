@@ -208,6 +208,7 @@ func Deps(name ...string) ([]string, error) {
 	return paths, nil
 }
 
+
 // TemplateFuncMap recreates the template environment provided in 'go list'
 func TemplateFuncMap() template.FuncMap {
 	return template.FuncMap{
@@ -255,4 +256,55 @@ func NewContext() (*Context, error) {
 	c.InstallSuffix = lines[9]
 
 	return &c, nil
+}
+
+// ExternalDependencies provides a list of external dependencies
+func ExternalDependencies(pkgs []string, ignores []string) ([]string, error) {
+	stdlib, err := Std()
+	if err != nil {
+		return nil, err
+	}
+
+	pkgs, err = Deps(pkgs...)
+	if err != nil {
+		return nil, err
+	}
+
+	pkgs = removeIfEquals(pkgs, stdlib)
+	pkgs = removeIfSubstring(pkgs, ignores)
+	return pkgs, nil
+}
+
+// generic []string function, remove elements of A that are in B
+func removeIfEquals(alist []string, blist []string) []string {
+	out := make([]string, 0, len(alist))
+	for _, a := range alist {
+		add := true
+		for _, b := range blist {
+			if a == b {
+				add = false
+			}
+		}
+		if add {
+			out = append(out, a)
+		}
+	}
+	return out
+}
+
+// removes elements of A that substring match any of B
+func removeIfSubstring(alist []string, blist []string) []string {
+	out := make([]string, 0, len(alist))
+	for _, a := range alist {
+		add := true
+		for _, b := range blist {
+			if strings.Index(a, b) != -1 {
+				add = false
+			}
+		}
+		if add {
+			out = append(out, a)
+		}
+	}
+	return out
 }
