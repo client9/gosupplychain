@@ -7,8 +7,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/client9/go-license"
 	"github.com/google/go-github/github"
+	"github.com/ryanuber/go-license"
 	"golang.org/x/oauth2"
 )
 
