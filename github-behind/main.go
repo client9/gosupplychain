@@ -9,7 +9,7 @@ import (
 	"strings"
 
 	"github.com/client9/gosupplychain"
-	//	"github.com/google/go-github/github"
+	"golang.org/x/tools/go/vcs"
 )
 
 func main() {
@@ -30,7 +30,17 @@ func main() {
 	}
 	gh := gosupplychain.NewGitHub(token)
 
+	roots := make(map[string]bool, len(gd.Deps))
 	for _, dep := range gd.Deps {
+		rr, err := vcs.RepoRootForImportPath(dep.ImportPath, true)
+		if err != nil {
+			log.Printf("Unable to process %s: %s", dep.ImportPath, err)
+			continue
+		}
+		if roots[rr.Root] {
+			continue
+		}
+		roots[rr.Root] = true
 		parts := strings.Split(dep.ImportPath, "/")
 		if len(parts) < 2 {
 			log.Printf("Skipping %s", dep.ImportPath)
