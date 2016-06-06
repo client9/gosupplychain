@@ -32,7 +32,7 @@ func main() {
 
 	roots := make(map[string]bool, len(gd.Deps))
 	for _, dep := range gd.Deps {
-		rr, err := vcs.RepoRootForImportPath(dep.ImportPath, true)
+		rr, err := vcs.RepoRootForImportPath(dep.ImportPath, false)
 		if err != nil {
 			log.Printf("Unable to process %s: %s", dep.ImportPath, err)
 			continue
