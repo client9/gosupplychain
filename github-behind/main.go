@@ -2,6 +2,7 @@ package main
 
 // CLI for determining how ahead/behind a repo is from master
 import (
+	//	"encoding/json"
 	"flag"
 	"fmt"
 	"log"
@@ -9,8 +10,19 @@ import (
 	"strings"
 
 	"github.com/client9/gosupplychain"
-	"golang.org/x/tools/go/vcs"
 )
+
+func cleanText(msg string) string {
+	msg = strings.Replace(msg, "\t", " ", -1)
+	msg = strings.Replace(msg, "\r", " ", -1)
+	msg = strings.Replace(msg, "\n", " ", -1)
+	msg = strings.Replace(msg, "  ", " ", -1)
+	msg = strings.TrimSpace(msg)
+	if len(msg) > 80 {
+		msg = msg[:80] + "..."
+	}
+	return msg
+}
 
 func main() {
 	flag.Parse()
@@ -24,59 +36,24 @@ func main() {
 	if len(args) == 0 {
 		log.Fatalf("Need path to godeps file")
 	}
-	gd, err := gosupplychain.LoadGodepsFile(args[0])
-	if err != nil {
-		log.Fatalf("Error loading godeps file %q: %s", args[0], err)
-	}
-	gh := gosupplychain.NewGitHub(token)
 
-	roots := make(map[string]bool, len(gd.Deps))
-	for _, dep := range gd.Deps {
-		rr, err := vcs.RepoRootForImportPath(dep.ImportPath, false)
-		if err != nil {
-			log.Printf("Unable to process %s: %s", dep.ImportPath, err)
-			continue
-		}
-		if roots[rr.Root] {
-			continue
-		}
-		roots[rr.Root] = true
-		parts := strings.Split(dep.ImportPath, "/")
-		if len(parts) < 2 {
-			log.Printf("Skipping %s", dep.ImportPath)
-			continue
-		}
-		if parts[0] == "golang.org" && parts[1] == "x" {
-			parts[0] = "github.com"
-			parts[1] = "golang"
-		}
+	imports := gosupplychain.Behind(token, args[0])
 
-		if parts[0] != "github.com" {
-			log.Printf("Skipping %s", dep.ImportPath)
+	for _, imp := range imports {
+		if imp.Status == "identical" {
 			continue
 		}
-
-		compare, _, err := gh.Client.Repositories.CompareCommits(parts[1], parts[2], dep.Rev, "HEAD")
-		if err != nil {
-			log.Printf("got error reading repo %s: %s", dep.ImportPath, err)
-			continue
-		}
-
-		fmt.Printf("%s: %s\n", dep.ImportPath, *compare.Status)
-		for pos, commit := range compare.Commits {
-			msg := ""
-			if commit.Commit.Message != nil {
-				msg = *commit.Commit.Message
-				msg = strings.Replace(msg, "\t", " ", -1)
-				msg = strings.Replace(msg, "\r", " ", -1)
-				msg = strings.Replace(msg, "\n", " ", -1)
-				msg = strings.Replace(msg, "  ", " ", -1)
-				if len(msg) > 80 {
-					msg = msg[:80] + "..."
-				}
-			}
-			sha := *commit.SHA
-			fmt.Printf("    %d %s %s\n", pos, sha[0:7], msg)
+		fmt.Printf("%s: %s\n", imp.Root, imp.Status)
+		for i, c := range imp.Commits {
+			fmt.Printf("  %d: %s %s\n", i, c.SHA[0:7], cleanText(c.Msg))
 		}
 	}
+
+	/*
+		raw, err := json.MarshalIndent(imports, "", "  ")
+		if err != nil {
+			log.Fatalf("unable to marshal output: %s", err)
+		}
+		fmt.Printf("%s\n", raw)
+	*/
 }
