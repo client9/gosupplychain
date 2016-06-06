@@ -44,9 +44,6 @@ func Behind(githubToken string, godepFile string) []ImportStatus {
 	imports := make([]ImportStatus, 0, len(gd.Deps))
 
 	for _, dep := range gd.Deps {
-		if strings.HasPrefix(dep.ImportPath, "github.sigsci.in") {
-			continue
-		}
 		rr, err := vcs.RepoRootForImportPath(dep.ImportPath, false)
 		if err != nil {
 			log.Printf("Unable to process %s: %s", dep.ImportPath, err)
