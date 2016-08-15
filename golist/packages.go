@@ -208,7 +208,6 @@ func Deps(name ...string) ([]string, error) {
 	return paths, nil
 }
 
-
 // TemplateFuncMap recreates the template environment provided in 'go list'
 func TemplateFuncMap() template.FuncMap {
 	return template.FuncMap{
