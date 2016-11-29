@@ -39,23 +39,23 @@ func Behind(githubToken string, godepFile string) []ImportStatus {
 		log.Fatalf("Error loading godeps file %q: %s", godepFile, err)
 	}
 
-	roots := make(map[string]bool, len(gd.Deps))
+	roots := make(map[string]bool, len(gd.VendorDeps()))
 
-	imports := make([]ImportStatus, 0, len(gd.Deps))
+	imports := make([]ImportStatus, 0, len(gd.VendorDeps()))
 
-	for _, dep := range gd.Deps {
-		rr, err := vcs.RepoRootForImportPath(dep.ImportPath, false)
+	for _, dep := range gd.VendorDeps() {
+		rr, err := vcs.RepoRootForImportPath(dep.Name, false)
 		if err != nil {
-			log.Printf("Unable to process %s: %s", dep.ImportPath, err)
+			log.Printf("Unable to process %s: %s", dep.Name, err)
 			continue
 		}
 		if roots[rr.Root] {
 			continue
 		}
 		roots[rr.Root] = true
-		parts := strings.Split(dep.ImportPath, "/")
+		parts := strings.Split(dep.Name, "/")
 		if len(parts) < 2 {
-			log.Printf("Skipping %s", dep.ImportPath)
+			log.Printf("Skipping %s", dep.Name)
 			continue
 		}
 		if parts[0] == "golang.org" && parts[1] == "x" {
@@ -64,13 +64,13 @@ func Behind(githubToken string, godepFile string) []ImportStatus {
 		}
 
 		if parts[0] != "github.com" {
-			log.Printf("Skipping %s", dep.ImportPath)
+			log.Printf("Skipping %s", dep.Name)
 			continue
 		}
 
-		compare, _, err := gh.Client.Repositories.CompareCommits(parts[1], parts[2], dep.Rev, "HEAD")
+		compare, _, err := gh.Client.Repositories.CompareCommits(parts[1], parts[2], dep.Version, "HEAD")
 		if err != nil {
-			log.Printf("got error reading repo %s: %s", dep.ImportPath, err)
+			log.Printf("got error reading repo %s: %s", dep.Name, err)
 			continue
 		}
 		status := ImportStatus{
