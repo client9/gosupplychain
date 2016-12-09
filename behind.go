@@ -32,30 +32,43 @@ func cleanText(msg string) string {
 
 // Behind takes a github token and a godep file
 //  and returns a list of dependencies and if they are out of date
-func Behind(githubToken string, godepFile string) []ImportStatus {
+func Behind(githubToken string, depFile string) []ImportStatus {
 	gh := NewGitHub(githubToken)
-	gd, err := LoadGodepsFile(godepFile)
-	if err != nil {
-		log.Fatalf("Error loading godeps file %q: %s", godepFile, err)
+	var vendorDeps []VendorDependency
+	switch {
+	case strings.Contains(depFile, "Godeps.json"):
+		g, err := LoadGodepsFile(depFile)
+		if err != nil {
+			log.Fatalf("Error loading deps file %q: %s", depFile, err)
+		}
+		vendorDeps = g.VendorDeps()
+	case strings.Contains(depFile, "glide.lock"):
+		g, err := LoadGlideFile(depFile)
+		if err != nil {
+			log.Fatalf("Error loading deps file %q: %s", depFile, err)
+		}
+		vendorDeps = g.VendorDeps()
+	default:
+		log.Fatalf("Invalid deps file %q (must be Godeps.json or glide.lock)", depFile)
 	}
 
-	roots := make(map[string]bool, len(gd.Deps))
+	roots := make(map[string]bool, len(vendorDeps))
 
-	imports := make([]ImportStatus, 0, len(gd.Deps))
+	imports := make([]ImportStatus, 0, len(vendorDeps))
 
-	for _, dep := range gd.Deps {
-		rr, err := vcs.RepoRootForImportPath(dep.ImportPath, false)
+	for _, dep := range vendorDeps {
+		rr, err := vcs.RepoRootForImportPath(dep.Name, false)
 		if err != nil {
-			log.Printf("Unable to process %s: %s", dep.ImportPath, err)
+			log.Printf("Unable to process %s: %s", dep.Name, err)
 			continue
 		}
 		if roots[rr.Root] {
 			continue
 		}
 		roots[rr.Root] = true
-		parts := strings.Split(dep.ImportPath, "/")
+		parts := strings.Split(dep.Name, "/")
 		if len(parts) < 2 {
-			log.Printf("Skipping %s", dep.ImportPath)
+			log.Printf("Skipping %s", dep.Name)
 			continue
 		}
 		if parts[0] == "golang.org" && parts[1] == "x" {
@@ -64,13 +77,13 @@ func Behind(githubToken string, godepFile string) []ImportStatus {
 		}
 
 		if parts[0] != "github.com" {
-			log.Printf("Skipping %s", dep.ImportPath)
+			log.Printf("Skipping %s", dep.Name)
 			continue
 		}
 
-		compare, _, err := gh.Client.Repositories.CompareCommits(parts[1], parts[2], dep.Rev, "HEAD")
+		compare, _, err := gh.Client.Repositories.CompareCommits(parts[1], parts[2], dep.Version, "HEAD")
 		if err != nil {
-			log.Printf("got error reading repo %s: %s", dep.ImportPath, err)
+			log.Printf("got error reading repo %s: %s", dep.Name, err)
 			continue
 		}
 		status := ImportStatus{

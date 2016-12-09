@@ -21,8 +21,20 @@ type Godeps struct {
 	Deps       []GoDepDependency
 }
 
+func (g Godeps) VendorDeps() []VendorDependency {
+	var deps []VendorDependency
+	for _, dep := range g.Deps {
+		deps = append(deps, VendorDependency{
+			dep.ImportPath,
+			dep.Rev,
+		})
+	}
+
+	return deps
+}
+
 // LoadGodepsFile loads a godeps file
-func LoadGodepsFile(path string) (Godeps, error) {
+func LoadGodepsFile(path string) (PackageManager, error) {
 	var g Godeps
 	f, err := os.Open(path)
 	if err != nil {
