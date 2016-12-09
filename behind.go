@@ -32,18 +32,31 @@ func cleanText(msg string) string {
 
 // Behind takes a github token and a godep file
 //  and returns a list of dependencies and if they are out of date
-func Behind(githubToken string, godepFile string) []ImportStatus {
+func Behind(githubToken string, depFile string) []ImportStatus {
 	gh := NewGitHub(githubToken)
-	gd, err := LoadGodepsFile(godepFile)
-	if err != nil {
-		log.Fatalf("Error loading godeps file %q: %s", godepFile, err)
+	var vendorDeps []VendorDependency
+	switch {
+	case strings.Contains(depFile, "Godeps.json"):
+		g, err := LoadGodepsFile(depFile)
+		if err != nil {
+			log.Fatalf("Error loading deps file %q: %s", depFile, err)
+		}
+		vendorDeps = gd.VendorDeps()
+	case strings.Contains(depFile, "glide.lock"):
+		g, err := LoadGlideFile(depFile)
+		if err != nil {
+			log.Fatalf("Error loading deps file %q: %s", depFile, err)
+		}
+		vendorDeps = g.VendorDeps()
+	default:
+		log.Fatalf("Invalid deps file %q (must be Godeps.json or glide.lock)", depFile)
 	}
 
-	roots := make(map[string]bool, len(gd.VendorDeps()))
+	roots := make(map[string]bool, len(vendorDeps))
 
-	imports := make([]ImportStatus, 0, len(gd.VendorDeps()))
+	imports := make([]ImportStatus, 0, len(vendorDeps))
 
-	for _, dep := range gd.VendorDeps() {
+	for _, dep := range vendorDeps {
 		rr, err := vcs.RepoRootForImportPath(dep.Name, false)
 		if err != nil {
 			log.Printf("Unable to process %s: %s", dep.Name, err)
