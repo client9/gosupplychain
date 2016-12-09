@@ -41,7 +41,7 @@ func Behind(githubToken string, depFile string) []ImportStatus {
 		if err != nil {
 			log.Fatalf("Error loading deps file %q: %s", depFile, err)
 		}
-		vendorDeps = gd.VendorDeps()
+		vendorDeps = g.VendorDeps()
 	case strings.Contains(depFile, "glide.lock"):
 		g, err := LoadGlideFile(depFile)
 		if err != nil {
