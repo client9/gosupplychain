@@ -1,6 +1,7 @@
 package gosupplychain
 
 import (
+	"context"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -85,7 +86,7 @@ func (gh GitHub) GetFileContents(owner, repo, tree, filepath string) (string, er
 //
 // sha must be a valid git sha value or "master"
 func (gh GitHub) GetTreeFiles(owner string, repo string, sha string) ([]GitHubFile, error) {
-	tree, _, err := gh.Client.Git.GetTree(owner, repo, sha, false)
+	tree, _, err := gh.Client.Git.GetTree(context.TODO(), owner, repo, sha, false)
 	if err != nil {
 		return nil, err
 	}
@@ -126,7 +127,7 @@ func (gh GitHub) SearchByUsers(oauthToken string, searchQuery string, users []st
 		}
 		q := fmt.Sprintf("user:%s %s", co, searchQuery)
 		log.Printf("Running query %q", q)
-		repos, _, err := gh.Client.Search.Repositories(q, opts)
+		repos, _, err := gh.Client.Search.Repositories(context.TODO(), q, opts)
 		if err != nil {
 			return nil, err
 		}
