@@ -100,7 +100,7 @@ func GetPackage(name string) (Package, error) {
 
 // Packages is a wrapper around `go list -e -json package...`
 //  golang doesn't expose this in a API
-//  inpsired by github.com/tools/godep which also doesn't expose this
+//  inspired by github.com/tools/godep which also doesn't expose this
 //  as a library
 func Packages(name ...string) ([]Package, error) {
 	if len(name) == 0 {
