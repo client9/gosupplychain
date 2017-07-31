@@ -15,7 +15,7 @@ import (
 )
 
 // Context is similar to
-// // https://github.com/golang/go/blob/master/src/cmd/go/context.go
+// https://github.com/golang/go/blob/master/src/cmd/go/context.go
 type Context struct {
 	GOARCH        string   // target architecture
 	GOOS          string   // target operating system
@@ -37,7 +37,7 @@ type PackageError struct {
 }
 
 // Package is copy of the Package struct as listed in https://golang.org/src/cmd/go/list.go
-//  oddly not exported in golang
+// oddly not exported in golang
 type Package struct {
 	Dir           string // directory containing package sources
 	ImportPath    string // import path of package in dir
@@ -99,9 +99,9 @@ func GetPackage(name string) (Package, error) {
 }
 
 // Packages is a wrapper around `go list -e -json package...`
-//  golang doesn't expose this in a API
-//  inspired by github.com/tools/godep which also doesn't expose this
-//  as a library
+// golang doesn't expose this in a API
+// inspired by github.com/tools/godep which also doesn't expose this
+// as a library
 func Packages(name ...string) ([]Package, error) {
 	if len(name) == 0 {
 		return nil, nil
@@ -140,7 +140,7 @@ func Packages(name ...string) ([]Package, error) {
 }
 
 // Std calls `go list std` to return a list of standard packages
-//  This functionality is not exported programmatically.
+// This functionality is not exported programmatically.
 func Std() ([]string, error) {
 	cmd := exec.Command("go", "list", "std")
 	cmd.Stderr = os.Stderr
@@ -171,7 +171,6 @@ func Std() ([]string, error) {
 
 // Deps list all dependencies for the given
 // list of package paths names returned in sorted order, or error
-//
 func Deps(name ...string) ([]string, error) {
 	if len(name) == 0 {
 		return nil, nil

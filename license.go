@@ -5,7 +5,7 @@ import (
 )
 
 // LicenseFilePrefix is a list of filename prefixes that indicate it
-//  might contain a software license
+// might contain a software license
 var LicenseFilePrefix = []string{
 	"licence", // GB spelling
 	"license",
@@ -16,7 +16,7 @@ var LicenseFilePrefix = []string{
 }
 
 // LegalFileSubstring are substrings that indicate the file is likely to contain
-// some type of legal declaration.   "legal" is often used that it might moved to
+// some type of legal declaration.  "legal" is often used that it might moved to
 // LicenseFilePrefix
 var LegalFileSubstring = []string{
 	"legal",
