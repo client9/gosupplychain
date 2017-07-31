@@ -1,6 +1,7 @@
 package gosupplychain
 
 import (
+	"context"
 	"log"
 	"strings"
 
@@ -68,7 +69,7 @@ func Behind(githubToken string, godepFile string) []ImportStatus {
 			continue
 		}
 
-		compare, _, err := gh.Client.Repositories.CompareCommits(parts[1], parts[2], dep.Rev, "HEAD")
+		compare, _, err := gh.Client.Repositories.CompareCommits(context.TODO(), parts[1], parts[2], dep.Rev, "HEAD")
 		if err != nil {
 			log.Printf("got error reading repo %s: %s", dep.ImportPath, err)
 			continue
