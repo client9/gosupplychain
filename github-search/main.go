@@ -29,7 +29,7 @@ var SearchMarkdownTemplate = `
 
 func main() {
 	searchQuery := flag.String("query", "language:go", "Search query to be executed per user")
-	addLicense := flag.Bool("add-license", true, "Attemp to determine software license (slower)")
+	addLicense := flag.Bool("add-license", true, "Attempt to determine software license (slower)")
 
 	// TODO add flag for template
 	// TODO add flag for output file
